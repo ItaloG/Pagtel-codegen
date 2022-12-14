@@ -1,8 +1,10 @@
 # Task Checklist
 
-- [] create a Pagtel Microservice-template with a CLI command
-- [] create a private route on existent file or crete if not exists
-- [] create a public route on existent file or crete if not exists
-- [] save files as `kebabCase`
-- [] save variables as `camelCase`
+- [] create a private route with method and path on a existing file or crete if not exists
+- [] create a public route with method and path on a existing file or crete if not exists
+- [] save files as `KebabCase`
 - [] save classes as `PascalCase`
+- [] save variables as `CamelCase`
+- [] create a middleware factory with prefix `make`
+- [] create a controller factory with prefix `make`
+- [] create a middleware with handle method and with a `domain useCase` and `ErrorHandler` as dependency
