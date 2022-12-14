@@ -15,12 +15,19 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "@typescript-eslint",
-    "eslint-plugin-import-helpers",
-    "prettier"
-  ],
-  "rules": {},
+  "plugins": ["@typescript-eslint", "eslint-plugin-import-helpers", "prettier"],
+  "rules": {
+    "@typescript-eslint/no-namespace": "off",
+    "import/prefer-default-export": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  },
   "settings": {
     "import/resolver": {
       "typescript": {}
