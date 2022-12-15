@@ -26,8 +26,8 @@
 
 ## Examples
 
-- middleware factory: `project generate --factory --middleware --name GetExample --scope example`
-- controller factory: `project generate --factory --controller --name GetExample --scope example`
+- middleware factory: `project generate --factory-middleware --name GetExample --scope example`
+- controller factory: `project generate --factory-controller --name GetExample --scope example`
 
 *****
 
