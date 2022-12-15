@@ -6,8 +6,8 @@
 - [] the command to create a file must be `project generate <FILE-TYPE>`, [FileTypes](#filetypes)
 - [] all creations must have argument `scope`, (`scope` is the argument representing the folder where the file will be created)
 - [] all creations must be exported on a `indexes` files
-- [] create a middleware factory with prefix `make`
-- [] create a controller factory with prefix `make`
+- [] create a factory must have a *factoryType*, like `project generate factory <FACTORY-TYPE>`, [FactoryType](#factorytypes)
+- [] all factories must have prefix `make`
 - [] create a middleware with handle method and with a `domain useCase` and `ErrorHandler` as dependency
 - [] if a middleware creation has argument `--cascade` it must create a middleware and create its `domain useCase` in the same `scope`
 - [] create a `UseCase` must have a *UseCaseType*, like `project generate usecase <USECASE-TYPE>`, [UseCaseType](#usecasetypes)
@@ -24,8 +24,16 @@
   
 *****
 
+## Examples
+
+- middleware factory: `project generate --factory --middleware --name GetExample --scope example`
+- controller factory: `project generate --factory --controller --name GetExample --scope example`
+
+*****
+
 ## Filetypes
 
+- factory
 - middleware
 - useCase
 - repository
@@ -41,3 +49,8 @@
 
 - mssql
 - mongo
+  
+## FactoryTypes
+
+- middleware
+- controller
