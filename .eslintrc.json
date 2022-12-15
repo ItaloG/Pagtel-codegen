@@ -17,6 +17,18 @@
   },
   "plugins": ["@typescript-eslint", "eslint-plugin-import-helpers", "prettier"],
   "rules": {
+    "import/no-unresolved": "error",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.spec.js",
+          "**/*.spec.ts",
+          "jest.config.ts"
+        ]
+      }
+    ],
+    "no-use-before-define": "off",
     "@typescript-eslint/no-namespace": "off",
     "import/prefer-default-export": "off",
     "import/extensions": [
