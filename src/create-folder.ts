@@ -1,17 +1,15 @@
 import fsPromises from "node:fs/promises";
 import fs from "node:fs";
-import { FormatString } from "./utils";
 
 export async function createFolderIfNotExists({
   defaultMainFolder,
   mainPath,
   newFolder,
 }: CreateFolder.Params): CreateFolder.Result {
-  const formattedFolder = FormatString.convertToKebabCase(newFolder);
   const defaultPath = `${mainPath}/${defaultMainFolder}`;
-  if (fs.existsSync(formattedFolder)) return;
+  if (fs.existsSync(newFolder)) return;
 
-  await fsPromises.mkdir(`${defaultPath}/${formattedFolder}`, {
+  await fsPromises.mkdir(`${defaultPath}/${newFolder}`, {
     recursive: true,
   });
 }
