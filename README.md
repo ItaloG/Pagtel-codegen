@@ -37,6 +37,7 @@
 - middleware
 - useCase
 - repository
+- service
 
 ## UseCaseTypes
 
