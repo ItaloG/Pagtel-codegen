@@ -1,4 +1,5 @@
 import {
+  generateDomainUsecaseTemplate,
   generateFactoryTemplate,
   generateMiddlewareTemplate,
 } from "@/templates";
@@ -6,10 +7,12 @@ import {
   middlewareFactoryTemplateMock,
   controllerFactoryTemplateMock,
   middlewareTemplateMock,
+  domainUsecaseTemplateMock,
 } from "./mocks";
 
 describe("#Template Generator", () => {
-  const componentName = "CreateExample";
+  const componentName = "createExample";
+  const componentMethod = "create";
 
   describe("#generateFactoryTemplate", () => {
     it("should generate middleware factory template", () => {
@@ -54,6 +57,20 @@ describe("#Template Generator", () => {
         template: middlewareTemplateMock,
       };
       const result = generateMiddlewareTemplate({ componentName });
+      expect(result).toStrictEqual(expected);
+    });
+  });
+
+  describe("#generateDomainUsecaseTemplate", () => {
+    it("should generate a domain usecase template", () => {
+      const expected = {
+        template: domainUsecaseTemplateMock,
+      };
+
+      const result = generateDomainUsecaseTemplate({
+        componentName,
+        componentMethod,
+      });
       expect(result).toStrictEqual(expected);
     });
   });
