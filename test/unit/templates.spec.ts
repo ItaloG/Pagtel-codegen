@@ -9,7 +9,7 @@ import {
 } from "./mocks";
 
 describe("#Template Generator", () => {
-  const componentName = "example";
+  const componentName = "CreateExample";
 
   describe("#generateFactoryTemplate", () => {
     it("should generate middleware factory template", () => {

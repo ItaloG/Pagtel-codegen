@@ -1,11 +1,11 @@
 export const middlewareTemplateMock = `
-import { Example, ErrorHandler } from '@/domain/usecases';
+import { CreateExample, ErrorHandler } from '@/domain/usecases';
 import { Middleware } from '@/presentation/protocols';
 import { serverError } from '@/presentation/utils';
 
-export class ExampleMiddleware implements Middleware {
+export class CreateExampleMiddleware implements Middleware {
   constructor(
-    private readonly example: Example,
+    private readonly createExample: CreateExample,
     private readonly errorHandler: ErrorHandler
   ) {}
 
@@ -15,7 +15,7 @@ export class ExampleMiddleware implements Middleware {
     next: Middleware.Next
   ): Middleware.Result {
     try {
-      throw new Error('ExampleMiddleware not implemented')
+      throw new Error('CreateExampleMiddleware not implemented')
       return next();
     } catch (error) {
       await this.errorHandler.handle(error, state.transactions);

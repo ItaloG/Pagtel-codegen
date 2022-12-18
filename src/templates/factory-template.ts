@@ -12,11 +12,11 @@ export const make$$componentNameMiddleware = () => {
   return new $$componentNameMiddleware(, makeErrorHandler());
 };`,
   controller: `
-import { CreateExampleController } from '@/presentation/controllers';
+import { $$componentNameController } from '@/presentation/controllers';
 import { commitAll } from '@/util';
 
-export const makeCreateExampleController = () =>
-  new CreateExampleController(commitAll);`,
+export const make$$componentNameController = () =>
+  new $$componentNameController(commitAll);`,
 };
 
 const FACTORY_TYPES = ["middleware", "controller"];
