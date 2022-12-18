@@ -1,7 +1,11 @@
-import { generateFactoryTemplate } from "@/templates";
+import {
+  generateFactoryTemplate,
+  generateMiddlewareTemplate,
+} from "@/templates";
 import {
   middlewareFactoryTemplateMock,
   controllerFactoryTemplateMock,
+  middlewareTemplateMock,
 } from "./mocks";
 
 describe("#Template Generator", () => {
@@ -41,6 +45,16 @@ describe("#Template Generator", () => {
           componentType: <any>"test",
         })
       ).toThrowError(expected);
+    });
+  });
+
+  describe("#generateMiddlewareTemplate", () => {
+    it("should generate a middleware template", () => {
+      const expected = {
+        template: middlewareTemplateMock,
+      };
+      const result = generateMiddlewareTemplate({ componentName });
+      expect(result).toStrictEqual(expected);
     });
   });
 });
