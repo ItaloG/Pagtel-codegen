@@ -3,6 +3,7 @@ import {
   generateDomainUsecaseTemplate,
   generateFactoryTemplate,
   generateMiddlewareTemplate,
+  generateRepositoryTemplate,
 } from "@/templates";
 import {
   middlewareFactoryTemplateMock,
@@ -12,6 +13,8 @@ import {
   dataUsecaseDbTemplateMock,
   dataUsecaseHttpTemplateMock,
   dataUsecaseMqTemplateMock,
+  repositoryMssqlTemplateMock,
+  repositoryMongoTemplateMock,
 } from "./mocks";
 
 describe("#Template Generator", () => {
@@ -122,6 +125,45 @@ describe("#Template Generator", () => {
 
       expect(() =>
         generateDataUsecaseTemplate({
+          componentName,
+          componentType: <any>"test",
+        })
+      ).toThrowError(expected);
+    });
+  });
+
+  describe("#generateRepositoryTemplate", () => {
+    it("should generate a repository mssql template", () => {
+      const expected = {
+        template: repositoryMssqlTemplateMock,
+      };
+
+      const result = generateRepositoryTemplate({
+        componentName,
+        componentType: "mssql",
+      });
+
+      expect(result).toStrictEqual(expected);
+    });
+
+    it("should generate a repository mongo template", () => {
+      const expected = {
+        template: repositoryMongoTemplateMock,
+      };
+
+      const result = generateRepositoryTemplate({
+        componentName,
+        componentType: "mongo",
+      });
+
+      expect(result).toStrictEqual(expected);
+    });
+
+    it("should throw a error if a invalid componentType has been passed", () => {
+      const expected = "Invalid component type";
+
+      expect(() =>
+        generateRepositoryTemplate({
           componentName,
           componentType: <any>"test",
         })
