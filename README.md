@@ -11,7 +11,6 @@
 - [] create a middleware with handle method and with a `domain useCase` and `ErrorHandler` as dependency
 - [] if a middleware creation has argument `--cascade` it must create a middleware and create its `domain useCase` in the same `scope`
 - [] create a `UseCase` must have a *UseCaseType*, like `project generate usecase <USECASE-TYPE>`, [UseCaseType](#usecasetypes)
-- [] if *UseCaseType* is other it must create a folder with next argument
 - [] if *UseCaseType* is db it must have `Db` prefix, implements a `domain usecase` with the next words and has a `Repository` as dependency
 - [] if *UseCaseType* is http it must have `Http` prefix, implements a `domain usecase` with the next words and has a `Http Service` as dependency
 - [] if *UseCaseType* is mq it must have `Mq` prefix, implements a `domain usecase` with the next words and has a `PublishInExchangeService` as dependency
@@ -28,6 +27,8 @@
 
 - middleware factory: `project generate --factory-middleware --name GetExample --scope example`
 - controller factory: `project generate --factory-controller --name GetExample --scope example`
+- middleware: `project generate --middleware --name GetExample --scope example`
+- useCase: `project generate --usecase --type db --name GetExample --scope example`
 
 *****
 
@@ -44,7 +45,6 @@
 - db
 - http
 - mq
-- other
 
 ## DatabaseTypes
 
