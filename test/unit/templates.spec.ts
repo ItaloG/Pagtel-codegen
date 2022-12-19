@@ -16,7 +16,6 @@ import {
 
 describe("#Template Generator", () => {
   const componentName = "createExample";
-  const componentMethod = "create";
 
   describe("#generateFactoryTemplate", () => {
     it("should generate middleware factory template", () => {
@@ -73,7 +72,6 @@ describe("#Template Generator", () => {
 
       const result = generateDomainUsecaseTemplate({
         componentName,
-        componentMethod,
       });
       expect(result).toStrictEqual(expected);
     });

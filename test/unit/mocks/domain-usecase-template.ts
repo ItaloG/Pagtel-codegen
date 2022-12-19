@@ -1,6 +1,6 @@
 export const domainUsecaseTemplateMock = `
 export interface CreateExample {
-  create(params: CreateExample.Params): CreateExample.Result;
+  unknown(params: CreateExample.Params): CreateExample.Result;
 }
 
 export namespace CreateExample {
