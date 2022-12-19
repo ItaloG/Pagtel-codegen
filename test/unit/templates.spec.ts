@@ -1,4 +1,5 @@
 import {
+  generateDataUsecaseTemplate,
   generateDomainUsecaseTemplate,
   generateFactoryTemplate,
   generateMiddlewareTemplate,
@@ -8,6 +9,9 @@ import {
   controllerFactoryTemplateMock,
   middlewareTemplateMock,
   domainUsecaseTemplateMock,
+  dataUsecaseDbTemplateMock,
+  dataUsecaseHttpTemplateMock,
+  dataUsecaseMqTemplateMock,
 } from "./mocks";
 
 describe("#Template Generator", () => {
@@ -72,6 +76,58 @@ describe("#Template Generator", () => {
         componentMethod,
       });
       expect(result).toStrictEqual(expected);
+    });
+  });
+
+  describe("#generateDataUsecaseTemplate", () => {
+    it("should generate a data usecase db template", () => {
+      const expected = {
+        template: dataUsecaseDbTemplateMock,
+      };
+
+      const result = generateDataUsecaseTemplate({
+        componentName,
+        componentType: "db",
+      });
+
+      expect(result).toStrictEqual(expected);
+    });
+
+    it("should generate a data usecase http template", () => {
+      const expected = {
+        template: dataUsecaseHttpTemplateMock,
+      };
+
+      const result = generateDataUsecaseTemplate({
+        componentName,
+        componentType: "http",
+      });
+
+      expect(result).toStrictEqual(expected);
+    });
+
+    it("should generate a data usecase mq template", () => {
+      const expected = {
+        template: dataUsecaseMqTemplateMock,
+      };
+
+      const result = generateDataUsecaseTemplate({
+        componentName,
+        componentType: "mq",
+      });
+
+      expect(result).toStrictEqual(expected);
+    });
+
+    it("should throw a error if a invalid componentType has been passed", () => {
+      const expected = "Invalid component type";
+
+      expect(() =>
+        generateDataUsecaseTemplate({
+          componentName,
+          componentType: <any>"test",
+        })
+      ).toThrowError(expected);
     });
   });
 });
