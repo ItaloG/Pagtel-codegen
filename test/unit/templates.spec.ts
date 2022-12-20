@@ -1,4 +1,5 @@
 import {
+  generateDataProtocolTemplate,
   generateDataUsecaseTemplate,
   generateDomainUsecaseTemplate,
   generateFactoryTemplate,
@@ -15,6 +16,8 @@ import {
   dataUsecaseMqTemplateMock,
   repositoryMssqlTemplateMock,
   repositoryMongoTemplateMock,
+  dataProtocolDbTemplateMock,
+  dataProtocolHttpTemplateMock,
 } from "./mocks";
 
 describe("#Template Generator", () => {
@@ -164,6 +167,45 @@ describe("#Template Generator", () => {
 
       expect(() =>
         generateRepositoryTemplate({
+          componentName,
+          componentType: <any>"test",
+        })
+      ).toThrowError(expected);
+    });
+  });
+
+  describe("#generateDataProtocolTemplate", () => {
+    it("should generate a data protocol db template", () => {
+      const expected = {
+        template: dataProtocolDbTemplateMock,
+      };
+
+      const result = generateDataProtocolTemplate({
+        componentName,
+        componentType: "db",
+      });
+
+      expect(result).toStrictEqual(expected);
+    });
+
+    it("should generate a data protocol http template", () => {
+      const expected = {
+        template: dataProtocolHttpTemplateMock,
+      };
+
+      const result = generateDataProtocolTemplate({
+        componentName,
+        componentType: "http",
+      });
+
+      expect(result).toStrictEqual(expected);
+    });
+
+    it("should throw a error if a invalid componentType has been passed", () => {
+      const expected = "Invalid component type";
+
+      expect(() =>
+        generateDataProtocolTemplate({
           componentName,
           componentType: <any>"test",
         })
