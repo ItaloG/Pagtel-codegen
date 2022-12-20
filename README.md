@@ -30,6 +30,7 @@
 - middleware: `project generate --middleware --name GetExample --scope example`
 - useCase: `project generate --usecase --type db --name GetExample --scope example`
 - repository: `project generate --repository --type mssql --database example --schema example`
+- service: `project generate --service --scope example`
 
 *****
 

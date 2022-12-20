@@ -5,6 +5,7 @@ import {
   generateFactoryTemplate,
   generateMiddlewareTemplate,
   generateRepositoryTemplate,
+  generateServiceTemplate,
 } from "@/templates";
 import {
   middlewareFactoryTemplateMock,
@@ -18,6 +19,7 @@ import {
   repositoryMongoTemplateMock,
   dataProtocolDbTemplateMock,
   dataProtocolHttpTemplateMock,
+  serviceTemplateMock,
 } from "./mocks";
 
 describe("#Template Generator", () => {
@@ -210,6 +212,19 @@ describe("#Template Generator", () => {
           componentType: <any>"test",
         })
       ).toThrowError(expected);
+    });
+  });
+
+  describe("#generateServiceTemplate", () => {
+    it("should generate a service template", () => {
+      const expected = {
+        template: serviceTemplateMock,
+      };
+
+      const result = generateServiceTemplate({
+        componentName,
+      });
+      expect(result).toStrictEqual(expected);
     });
   });
 });

@@ -9,3 +9,4 @@ export * from "./repository-mssql-template";
 export * from "./repository-mongo-template";
 export * from "./data-protocol-db-template";
 export * from "./data-protocol-http-template";
+export * from "./service-template";
