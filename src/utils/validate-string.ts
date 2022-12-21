@@ -3,4 +3,9 @@ export class ValidateString {
     if (string.match(/\d|\W/)) return false;
     return true;
   }
+
+  static validateHasWord(
+    string: string,
+    matchWord: string | string[]
+  ): boolean {}
 }
