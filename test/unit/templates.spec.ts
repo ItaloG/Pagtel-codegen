@@ -1,4 +1,5 @@
 import {
+  generateControllerTemplate,
   generateDataProtocolTemplate,
   generateDataUsecaseTemplate,
   generateDomainUsecaseTemplate,
@@ -20,6 +21,7 @@ import {
   dataProtocolDbTemplateMock,
   dataProtocolHttpTemplateMock,
   serviceTemplateMock,
+  controllerTemplateMock,
 } from "./mocks";
 
 describe("#Template Generator", () => {
@@ -222,6 +224,19 @@ describe("#Template Generator", () => {
       };
 
       const result = generateServiceTemplate({
+        componentName,
+      });
+      expect(result).toStrictEqual(expected);
+    });
+  });
+
+  describe("#generateControllerTemplate", () => {
+    it("should generate a controller template", () => {
+      const expected = {
+        template: controllerTemplateMock,
+      };
+
+      const result = generateControllerTemplate({
         componentName,
       });
       expect(result).toStrictEqual(expected);
