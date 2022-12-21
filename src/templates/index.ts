@@ -5,3 +5,4 @@ export * from "./data-usecase-template";
 export * from "./repository-template";
 export * from "./data-protocol-template";
 export * from "./service-template";
+export * from "./controller-template";
