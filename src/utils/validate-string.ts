@@ -4,8 +4,7 @@ export class ValidateString {
     return true;
   }
 
-  static validateHasWord(
-    string: string,
-    matchWord: string | string[]
-  ): boolean {}
+  static validateHasWord(string: string, matchWord: string): boolean {
+    return string.includes(matchWord);
+  }
 }
