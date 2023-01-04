@@ -8,7 +8,7 @@
     "codegen": "./dist/src/index.js"
   },
   "scripts": {
-    "start": "node dist/index.ts codegen",
+    "start": "node dist/src/index.js generate",
     "start:dev": "tsnd --respawn --transpile-only --ignore-watch node_modules --no-notify  src/index.ts --help",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --verbose",
