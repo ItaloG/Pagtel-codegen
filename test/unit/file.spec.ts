@@ -22,13 +22,13 @@ describe("#File", () => {
   });
 
   test("#create should create a folder", async () => {
-    jest.spyOn(fsPromises, "writeFile").mockResolvedValue(Promise.resolve());
+    jest.spyOn(fsPromises, "appendFile").mockResolvedValue(Promise.resolve());
 
     await File.create({
       fileContent: "",
-      fileName: "newFile",
+      filePath: "newFile",
     });
 
-    expect(fsPromises.writeFile).toHaveBeenCalledTimes(1);
+    expect(fsPromises.appendFile).toHaveBeenCalledTimes(1);
   });
 });

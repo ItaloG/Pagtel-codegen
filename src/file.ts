@@ -9,9 +9,9 @@ export class File {
 
   static async create({
     fileContent,
-    fileName,
+    filePath,
   }: CreateFolder.Params): CreateFolder.Result {
-    await fsPromises.writeFile(fileName, fileContent);
+    await fsPromises.appendFile(filePath, fileContent);
   }
 }
 
@@ -24,7 +24,7 @@ namespace VerifyExists {
 
 namespace CreateFolder {
   export type Params = {
-    fileName: string;
+    filePath: string;
     fileContent: string;
   };
   export type Result = Promise<void>;
