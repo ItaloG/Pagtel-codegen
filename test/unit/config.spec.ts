@@ -8,6 +8,7 @@ describe("#Config", () => {
   test("#mapCommands should ", () => {
     const data = { f: "f", factory: "factory" };
     mapCommands(TEMPLATE_GENERATORS, data);
-    expect(factoryFunction).toHaveBeenCalled();
+    expect(factoryFunction).toHaveBeenCalledTimes(1);
+    expect(factoryFunction).toHaveBeenCalledWith(data);
   });
 });
