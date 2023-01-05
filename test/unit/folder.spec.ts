@@ -26,7 +26,6 @@ describe("#Folder", () => {
 
     await Folder.create({
       mainPath: "",
-      defaultMainFolder: "",
       newFolder: "newFolder",
     });
 

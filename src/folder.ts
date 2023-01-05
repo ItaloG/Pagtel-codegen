@@ -8,12 +8,10 @@ export class Folder {
   }
 
   static async create({
-    defaultMainFolder,
     mainPath,
     newFolder,
   }: CreateFolder.Params): CreateFolder.Result {
-    const defaultPath = `${mainPath}/${defaultMainFolder}`;
-    await fsPromises.mkdir(`${defaultPath}/${newFolder}`, {
+    await fsPromises.mkdir(`${mainPath}/${newFolder}`, {
       recursive: true,
     });
   }
@@ -29,7 +27,6 @@ namespace VerifyExists {
 namespace CreateFolder {
   export type Params = {
     mainPath: string;
-    defaultMainFolder: string;
     newFolder: string;
   };
   export type Result = Promise<void>;
