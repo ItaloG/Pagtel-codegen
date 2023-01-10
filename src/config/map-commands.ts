@@ -5,8 +5,8 @@ export const mapCommands = async (
   const mappedCommandKeys = Object.keys(mappedCommands);
   const promises: Array<Promise<void>> = [];
   mappedCommandKeys.forEach((mappedCommand) => {
-    if (!commands[mappedCommand]) return;
-    promises.push(mappedCommands[mappedCommand]({ ...commands }));
+    if (commands[mappedCommand])
+      promises.push(mappedCommands[mappedCommand]({ ...commands }));
   });
 
   await Promise.all(promises);
