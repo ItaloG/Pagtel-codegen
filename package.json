@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node dist/src/index.js generate",
     "start:dev": "tsnd --respawn --transpile-only --ignore-watch node_modules --no-notify  src/index.ts --help",
-    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+    "test": "NODE_ENV=test jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --verbose",
     "test:unit": "yarn test --watch -c jest-unit.config.ts",
     "test:integration": "yarn test --watch -c jest-integration.config.ts",
