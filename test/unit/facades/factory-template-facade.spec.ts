@@ -65,12 +65,14 @@ describe("#Factory Facade", () => {
 
     const fileCreateSpy = jest.spyOn(File, "create");
 
-    await generateFactoryFacade({
+    const expected = { type: "success", message: "factory generated" };
+    const result = await generateFactoryFacade({
       name: "any_name",
       scope: "any_scope",
       factoryType: "middleware",
     });
 
     expect(fileCreateSpy).toHaveBeenCalledTimes(2);
+    expect(result).toStrictEqual(expected);
   });
 });
