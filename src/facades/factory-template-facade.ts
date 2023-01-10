@@ -14,12 +14,16 @@ export async function generateFactoryFacade({
 
   const formattedScope = FormatString.convertToKebabCase(scope);
   const templateName = `make-${FormatString.convertToKebabCase(name)}`;
+  const templateFilePath = `${FACTORY_MAIN_PATH}/${formattedScope}/${templateName}.ts`;
 
-  const folderExists = Folder.verifyExists({
+  const templateFileExists = File.verifyExists({ file: templateFilePath });
+  if (templateFileExists)
+    return { type: "info", message: "Factory file already exists" };
+
+  const scopeFolderExists = Folder.verifyExists({
     folder: `${FACTORY_MAIN_PATH}/${formattedScope}`,
   });
-
-  if (!folderExists)
+  if (!scopeFolderExists)
     await Folder.create({ mainPath: FACTORY_MAIN_PATH, newFolder: scope });
 
   const indexFilePath = `${FACTORY_MAIN_PATH}/index.ts`;
@@ -33,10 +37,9 @@ export async function generateFactoryFacade({
     componentType: factoryType,
   });
 
-  const templateFilePath = `${FACTORY_MAIN_PATH}/${formattedScope}/${templateName}.ts`;
   await File.create({ filePath: templateFilePath, fileContent: template });
 
-  return factoryType;
+  return { type: "success", message: "factory generated" };
 }
 
 namespace FactoryFacade {
@@ -45,5 +48,5 @@ namespace FactoryFacade {
     factoryType?: "middleware" | "controller";
     scope: string;
   };
-  export type Result = Promise<string>;
+  export type Result = Promise<{ type: string; message: string }>;
 }
