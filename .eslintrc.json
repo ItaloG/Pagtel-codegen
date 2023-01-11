@@ -17,6 +17,7 @@
   },
   "plugins": ["@typescript-eslint", "eslint-plugin-import-helpers", "prettier"],
   "rules": {
+    "@typescript-eslint/ban-types": "off",
     "import/no-unresolved": "error",
     "import/no-extraneous-dependencies": [
       "error",

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.ts",
   "bin": {
-    "codegen": "./dist/src/index.js"
+    "codegen": "./dist/index.js"
   },
   "scripts": {
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
