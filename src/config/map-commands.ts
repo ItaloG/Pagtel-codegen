@@ -1,13 +1,12 @@
 export const mapCommands = async (
   mappedCommands: any,
-  commands: any
+  commands: string[],
+  args: any
 ): Promise<void> => {
-  const mappedCommandKeys = Object.keys(mappedCommands);
   const promises: Array<Promise<void>> = [];
-  mappedCommandKeys.forEach((mappedCommand) => {
-    if (commands[mappedCommand])
-      promises.push(mappedCommands[mappedCommand]({ ...commands }));
-  });
+  commands.forEach((command) =>
+    promises.push(mappedCommands[command]({ ...args }))
+  );
 
   await Promise.all(promises);
 };
