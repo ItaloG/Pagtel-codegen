@@ -6,9 +6,10 @@ describe("#Config", () => {
     factory: factoryFunction,
   };
   test("#mapCommands should ", () => {
-    const data = { f: "f", factory: "factory" };
-    mapCommands(TEMPLATE_GENERATORS, data);
+    const commands = ["factory"];
+    const args = { n: "name", name: "name", t: "type", type: "type" };
+    mapCommands(TEMPLATE_GENERATORS, commands, args);
     expect(factoryFunction).toHaveBeenCalledTimes(1);
-    expect(factoryFunction).toHaveBeenCalledWith(data);
+    expect(factoryFunction).toHaveBeenCalledWith(args);
   });
 });
