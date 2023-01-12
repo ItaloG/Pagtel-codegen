@@ -5,3 +5,9 @@ export const generateFactoryPath = (type: string): string => {
     ? `${TEST_TEMPLATE_DEFAULT_PATH}/main/factories/${type}`
     : `src/main/factories/${type}s`;
 };
+
+export const generateMiddlewarePath = (): string => {
+  return process.env.NODE_ENV === "test"
+    ? `${TEST_TEMPLATE_DEFAULT_PATH}/presentation/middlewares`
+    : `src/presentation/middlewares`;
+};
