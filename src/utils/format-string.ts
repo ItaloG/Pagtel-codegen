@@ -12,6 +12,11 @@ export class FormatString {
     return [firstLetter, ...rest].join("");
   }
 
+  static convertToSnakeCase(string: string): string {
+    const formattedFirstLetter = this.transform({ string, upperCase: false });
+    return formattedFirstLetter.replace(/(?=[A-Z])/g, "_").toLowerCase();
+  }
+
   static convertToKebabCase(string: string): string {
     const formattedFirstLetter = this.transform({ string, upperCase: false });
     return formattedFirstLetter.replace(/(?=[A-Z])/g, "-").toLowerCase();
