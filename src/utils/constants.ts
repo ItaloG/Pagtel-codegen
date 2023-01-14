@@ -11,3 +11,9 @@ export const generateMiddlewarePath = (): string => {
     ? `${TEST_TEMPLATE_DEFAULT_PATH}/presentation/middlewares`
     : `src/presentation/middlewares`;
 };
+
+export const generateUsecasePath = (type: string): string => {
+  return process.env.NODE_ENV === "test"
+    ? `${TEST_TEMPLATE_DEFAULT_PATH}/data/usecases/${type}`
+    : `src/data/usecases/${type}`;
+};
