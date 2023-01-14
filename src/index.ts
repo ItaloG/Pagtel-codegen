@@ -3,7 +3,11 @@
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import { mapCommands } from "./config/map-commands";
-import { generateFactoryFacade } from "./facades";
+import {
+  generateFactoryFacade,
+  generateMiddlewareFacade,
+  generateUsecaseFacade,
+} from "./facades";
 import { validateFields } from "./validations";
 
 const {
@@ -55,7 +59,35 @@ const {
         describe: "Folder where file will be generate",
         type: "string",
         demandOption: true,
-      });
+      })
+      .example("middleware --name GetDog --scope dog", "create a middleware")
+      .example("middleware -n GetDog -s dog", "create a middleware");
+  })
+  .command("usecase", "Generate a usecase template", (builder) => {
+    return builder
+      .option("usecase-type", {
+        alias: "t",
+        describe: "Type of usecase",
+        choices: ["db", "http", "mq"],
+        demandOption: true,
+      })
+      .option("name", {
+        alias: "n",
+        describe: "Name of component",
+        type: "string",
+        demandOption: true,
+      })
+      .option("scope", {
+        alias: "s",
+        describe: "Folder where file will be generate",
+        type: "string",
+        demandOption: true,
+      })
+      .example(
+        "usecase --usecase-type db --name GetDog --scope dog",
+        "create a database usecase"
+      )
+      .example("usecase -t db -n GetDog -s dog", "create a database usecase");
   })
   .epilog("copyright ItaloG - Italo Gabriel 2022");
 
@@ -63,6 +95,8 @@ const FIELDS_TO_VALIDATE = ["name", "scope"];
 
 const TEMPLATE_GENERATORS = {
   factory: generateFactoryFacade,
+  middleware: generateMiddlewareFacade,
+  usecase: generateUsecaseFacade,
 };
 
 // VALIDAR COMANDOS
