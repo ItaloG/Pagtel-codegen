@@ -8,6 +8,7 @@ import {
   generateRepositoryTemplate,
   generateServiceTemplate,
 } from "@/templates";
+import { generateMongoModelTemplate } from "@/templates/mongo-model-template";
 import {
   middlewareFactoryTemplateMock,
   controllerFactoryTemplateMock,
@@ -22,6 +23,7 @@ import {
   dataProtocolHttpTemplateMock,
   serviceTemplateMock,
   controllerTemplateMock,
+  mongoModelTemplateMock,
 } from "./mocks";
 
 describe("#Template Generator", () => {
@@ -237,6 +239,19 @@ describe("#Template Generator", () => {
       };
 
       const result = generateControllerTemplate({
+        componentName,
+      });
+      expect(result).toStrictEqual(expected);
+    });
+  });
+
+  describe("generateMongoModelTemplate", () => {
+    it("should generate a mongo model template", () => {
+      const expected = {
+        template: mongoModelTemplateMock,
+      };
+
+      const result = generateMongoModelTemplate({
         componentName,
       });
       expect(result).toStrictEqual(expected);
