@@ -1,6 +1,7 @@
 import {
   generateFactoryPath,
   generateMiddlewarePath,
+  generateRepositoryPath,
   generateUsecasePath,
 } from "@/utils";
 
@@ -50,6 +51,21 @@ describe("#Constants", () => {
       process.env.NODE_ENV = "dev";
       const expected = "src/data/usecases/any_type";
       const result = generateUsecasePath("any_type");
+      expect(result).toStrictEqual(expected);
+    });
+  });
+
+  describe("#generateRepositoryPath", () => {
+    it('should return a "test path" if environment is test', () => {
+      const expected = "test/integration/temp/src/infra/db/any_type";
+      const result = generateRepositoryPath("any_type");
+      expect(result).toStrictEqual(expected);
+    });
+
+    it('should return a "production path" if environment is production', () => {
+      process.env.NODE_ENV = "dev";
+      const expected = "src/infra/db/any_type";
+      const result = generateRepositoryPath("any_type");
       expect(result).toStrictEqual(expected);
     });
   });
