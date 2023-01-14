@@ -162,7 +162,7 @@ describe("#Template Generator", () => {
 
       const result = generateRepositoryTemplate({
         componentName,
-        componentType: "mongo",
+        componentType: "mongodb",
       });
 
       expect(result).toStrictEqual(expected);

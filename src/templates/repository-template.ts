@@ -8,13 +8,13 @@ const REPOSITORY_TEMPLATES = {
 import { Repository } from '@/infra/db/mssql/util';
 
 export class $$componentNameRepository extends Repository {}`,
-  mongo: `
+  mongodb: `
 import { $$componentNameModel } from './$$kebabCaseComponentName-model';
 
 export class $$componentNameRepository {}`,
 };
 
-const REPOSITORY_TYPES = ["mssql", "mongo"];
+const REPOSITORY_TYPES = ["mssql", "mongodb"];
 
 export function generateRepositoryTemplate({
   componentName,
@@ -43,7 +43,7 @@ export function generateRepositoryTemplate({
 namespace RepositoryTemplate {
   export type Params = {
     componentName: string;
-    componentType: "mssql" | "mongo";
+    componentType: "mssql" | "mongodb";
   };
 
   export type Result = {
