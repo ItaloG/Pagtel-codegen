@@ -1,9 +1,9 @@
 import { generateFactoryFacade } from "@/facades";
 import fsPromises from "node:fs/promises";
 import fs from "node:fs";
+import { generateFactoryPath } from "@/utils";
 
 describe("#Integration Factory Facade", () => {
-  const TEMPLATE_FILE_PATH = `${__dirname}/temp/src/main/factories`;
   afterEach(async () => {
     await fsPromises.rm(`${__dirname}/temp/src`, {
       recursive: true,
@@ -18,8 +18,10 @@ describe("#Integration Factory Facade", () => {
       factoryType: type,
     });
 
-    const templatePath = `${TEMPLATE_FILE_PATH}/${type}/${data.scope.toLowerCase()}/make-get-dog-middleware.ts`;
-    const indexPath = `${TEMPLATE_FILE_PATH}/${type}/${data.scope.toLowerCase()}/index.ts`;
+    const MAIN_PATH = generateFactoryPath(type);
+
+    const templatePath = `${MAIN_PATH}/${data.scope.toLowerCase()}/make-get-dog-middleware.ts`;
+    const indexPath = `${MAIN_PATH}/${data.scope.toLowerCase()}/index.ts`;
 
     const templateResult = fs.existsSync(templatePath);
     const indexResult = fs.existsSync(indexPath);
@@ -37,8 +39,10 @@ describe("#Integration Factory Facade", () => {
       factoryType: type,
     });
 
-    const templatePath = `${TEMPLATE_FILE_PATH}/${type}/${data.scope.toLowerCase()}/make-get-dog-controller.ts`;
-    const indexPath = `${TEMPLATE_FILE_PATH}/${type}/${data.scope.toLowerCase()}/index.ts`;
+    const MAIN_PATH = generateFactoryPath(type);
+
+    const templatePath = `${MAIN_PATH}/${data.scope.toLowerCase()}/make-get-dog-controller.ts`;
+    const indexPath = `${MAIN_PATH}/${data.scope.toLowerCase()}/index.ts`;
 
     const templateResult = fs.existsSync(templatePath);
     const indexResult = fs.existsSync(indexPath);

@@ -1,9 +1,10 @@
 import fsPromises from "node:fs/promises";
 import fs from "node:fs";
 import { generateMiddlewareFacade } from "@/facades";
+import { generateMiddlewarePath } from "@/utils";
 
 describe("#Integration Middleware Facade", () => {
-  const TEMPLATE_FILE_PATH = `${__dirname}/temp/src/presentation/middlewares`;
+  const TEMPLATE_FILE_PATH = generateMiddlewarePath();
   afterEach(async () => {
     await fsPromises.rm(`${__dirname}/temp/src`, {
       recursive: true,
