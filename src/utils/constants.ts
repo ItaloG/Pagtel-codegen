@@ -17,3 +17,9 @@ export const generateUsecasePath = (type: string): string => {
     ? `${TEST_TEMPLATE_DEFAULT_PATH}/data/usecases/${type}`
     : `src/data/usecases/${type}`;
 };
+
+export const generateRepositoryPath = (type: string): string => {
+  return process.env.NODE_ENV === "test"
+    ? `${TEST_TEMPLATE_DEFAULT_PATH}/infra/db/${type}`
+    : `src/infra/db/${type}`;
+};
