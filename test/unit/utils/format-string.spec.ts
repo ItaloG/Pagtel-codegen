@@ -22,6 +22,13 @@ describe("#FormatString", () => {
     expect(result).toStrictEqual(expected);
   });
 
+  test("#convertToSnakeCase should convert a string to snakeCase", () => {
+    const data = "HelloMyWord";
+    const expected = "hello_my_word";
+    const result = FormatString.convertToSnakeCase(data);
+    expect(result).toEqual(expected);
+  });
+
   test("#convertToKebabCase given an empty string it should return empty", () => {
     const data = "";
     const expected = "";
@@ -40,6 +47,13 @@ describe("#FormatString", () => {
     const data = "";
     const expected = "";
     const result = FormatString.upperCaseFirstLetter(data);
+    expect(result).toStrictEqual(expected);
+  });
+
+  test("#convertToSnakeCase given an empty string it should return empty", () => {
+    const data = "";
+    const expected = "";
+    const result = FormatString.convertToSnakeCase(data);
     expect(result).toStrictEqual(expected);
   });
 });
