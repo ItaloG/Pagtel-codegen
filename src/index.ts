@@ -7,6 +7,7 @@ import {
   generateFactoryFacade,
   generateMiddlewareFacade,
   generateRepositoryFacade,
+  generateServiceFacade,
   generateUsecaseFacade,
 } from "./facades";
 import { validateFields } from "./validations";
@@ -125,6 +126,23 @@ const {
         "create a repository"
       );
   })
+  .command("service", "generate a service template", (builder) => {
+    return builder
+      .option("name", {
+        alias: "n",
+        describe: "Name of component",
+        type: "string",
+        demandOption: true,
+      })
+      .option("scope", {
+        alias: "s",
+        describe: "Folder where file will be generate",
+        type: "string",
+        demandOption: true,
+      })
+      .example("service --name GetDog --scope dog", "create a service")
+      .example("service -n GetDog -s dog", "create a service");
+  })
   .epilog("copyright ItaloG - Italo Gabriel 2022");
 
 const REQUIRED_FIELDS: any = {
@@ -132,12 +150,14 @@ const REQUIRED_FIELDS: any = {
   middleware: ["name", "scope"],
   usecase: ["name", "scope"],
   repository: ["name", "database", "schema"],
+  service: ["name", "scope"],
 };
 const TEMPLATE_GENERATORS = {
   factory: generateFactoryFacade,
   middleware: generateMiddlewareFacade,
   usecase: generateUsecaseFacade,
   repository: generateRepositoryFacade,
+  service: generateServiceFacade,
 };
 
 // VALIDAR COMANDOS
