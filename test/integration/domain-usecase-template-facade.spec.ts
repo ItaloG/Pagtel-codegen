@@ -10,7 +10,7 @@ describe("#Integration Domain Usecase Facade", () => {
     });
   });
 
-  it("should generate a middleware", async () => {
+  it("should generate a domain usecase", async () => {
     const data = { name: "GetDog", scope: "Dog" };
     await generateDomainUsecaseFacade({
       ...data,

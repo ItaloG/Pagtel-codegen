@@ -10,7 +10,7 @@ describe("#Integration Controller Facade", () => {
     });
   });
 
-  it("should generate a middleware", async () => {
+  it("should generate a controller", async () => {
     const data = { name: "GetDog", scope: "Dog" };
     await generateControllerFacade({
       ...data,

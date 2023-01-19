@@ -31,7 +31,7 @@ describe("#Integration Data Protocol Facade", () => {
     expect(indexResult).toStrictEqual(expected);
   });
 
-  it("should generate a controller factory", async () => {
+  it("should generate a http data protocol", async () => {
     const data = { name: "GetDog", scope: "Dog" };
     const type = "http";
     await generateDataProtocolFacade({
