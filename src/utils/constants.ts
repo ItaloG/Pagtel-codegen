@@ -47,3 +47,9 @@ export const generateDomainUsecasePath = (): string => {
     ? `${TEST_TEMPLATE_DEFAULT_PATH}/domain/usecases`
     : `src/domain/usecases`;
 };
+
+export const generateMongoModelPath = (): string => {
+  return process.env.NODE_ENV === "test"
+    ? `${TEST_TEMPLATE_DEFAULT_PATH}/infra/db/mongodb`
+    : `src/infra/db/mongodb`;
+};
