@@ -95,7 +95,7 @@ const {
       .option("repository-type", {
         alias: "t",
         describe: "Type of repository",
-        choices: ["mssql", "mongo"],
+        choices: ["mssql", "mongodb"],
         demandOption: true,
       })
       .option("database", {
@@ -120,12 +120,19 @@ const {
         "repository --repository-type mssql --name GetDog --scope dog",
         "create a repository"
       )
-      .example("repository -t mssql -n GetDog -s dog", "create a repository");
+      .example(
+        "repository -t mssql -n GetDog -d dog -s dog",
+        "create a repository"
+      );
   })
   .epilog("copyright ItaloG - Italo Gabriel 2022");
 
-const FIELDS_TO_VALIDATE = ["name", "scope"];
-
+const REQUIRED_FIELDS: any = {
+  factory: ["name", "scope"],
+  middleware: ["name", "scope"],
+  usecase: ["name", "scope"],
+  repository: ["name", "database", "schema"],
+};
 const TEMPLATE_GENERATORS = {
   factory: generateFactoryFacade,
   middleware: generateMiddlewareFacade,
@@ -137,6 +144,7 @@ const TEMPLATE_GENERATORS = {
 // ADICIONAR LOGGER
 
 try {
+  const FIELDS_TO_VALIDATE = REQUIRED_FIELDS[commands[0]];
   validateFields(FIELDS_TO_VALIDATE, args);
   mapCommands(TEMPLATE_GENERATORS, commands, args);
 } catch (error) {
