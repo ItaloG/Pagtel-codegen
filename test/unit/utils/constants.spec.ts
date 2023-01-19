@@ -2,6 +2,7 @@ import {
   generateFactoryPath,
   generateMiddlewarePath,
   generateRepositoryPath,
+  generateServicePath,
   generateUsecasePath,
 } from "@/utils";
 
@@ -66,6 +67,21 @@ describe("#Constants", () => {
       process.env.NODE_ENV = "dev";
       const expected = "src/infra/db/any_type";
       const result = generateRepositoryPath("any_type");
+      expect(result).toStrictEqual(expected);
+    });
+  });
+
+  describe("#generateServicePath", () => {
+    it('should return a "test path" if environment is test', () => {
+      const expected = "test/integration/temp/src/infra/http/service";
+      const result = generateServicePath();
+      expect(result).toStrictEqual(expected);
+    });
+
+    it('should return a "production path" if environment is production', () => {
+      process.env.NODE_ENV = "dev";
+      const expected = "src/infra/http/service";
+      const result = generateServicePath();
       expect(result).toStrictEqual(expected);
     });
   });
