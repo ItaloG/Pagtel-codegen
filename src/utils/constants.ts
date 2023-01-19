@@ -41,3 +41,9 @@ export const generateDataProtocolPath = (type: string): string => {
     ? `${TEST_TEMPLATE_DEFAULT_PATH}/data/protocols/${type}`
     : `src/data/protocols/${type}`;
 };
+
+export const generateDomainUsecasePath = (): string => {
+  return process.env.NODE_ENV === "test"
+    ? `${TEST_TEMPLATE_DEFAULT_PATH}/domain/usecases`
+    : `src/domain/usecases`;
+};
