@@ -29,3 +29,9 @@ export const generateServicePath = (): string => {
     ? `${TEST_TEMPLATE_DEFAULT_PATH}/infra/http/service`
     : `src/infra/http/service`;
 };
+
+export const generateControllerPath = (): string => {
+  return process.env.NODE_ENV === "test"
+    ? `${TEST_TEMPLATE_DEFAULT_PATH}/presentation/controllers`
+    : `src/presentation/controllers`;
+};
