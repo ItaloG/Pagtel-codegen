@@ -1,5 +1,6 @@
 import {
   generateControllerPath,
+  generateDataProtocolPath,
   generateFactoryPath,
   generateMiddlewarePath,
   generateRepositoryPath,
@@ -98,6 +99,21 @@ describe("#Constants", () => {
       process.env.NODE_ENV = "dev";
       const expected = "src/presentation/controllers";
       const result = generateControllerPath();
+      expect(result).toStrictEqual(expected);
+    });
+  });
+
+  describe("#generateDataProtocolPath", () => {
+    it('should return a "test path" if environment is test', () => {
+      const expected = "test/integration/temp/src/data/protocols/any_type";
+      const result = generateDataProtocolPath("any_type");
+      expect(result).toStrictEqual(expected);
+    });
+
+    it('should return a "production path" if environment is production', () => {
+      process.env.NODE_ENV = "dev";
+      const expected = "src/data/protocols/any_type";
+      const result = generateDataProtocolPath("any_type");
       expect(result).toStrictEqual(expected);
     });
   });
