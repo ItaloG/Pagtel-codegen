@@ -35,3 +35,9 @@ export const generateControllerPath = (): string => {
     ? `${TEST_TEMPLATE_DEFAULT_PATH}/presentation/controllers`
     : `src/presentation/controllers`;
 };
+
+export const generateDataProtocolPath = (type: string): string => {
+  return process.env.NODE_ENV === "test"
+    ? `${TEST_TEMPLATE_DEFAULT_PATH}/data/protocols/${type}`
+    : `src/data/protocols/${type}`;
+};
