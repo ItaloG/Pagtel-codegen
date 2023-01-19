@@ -1,4 +1,5 @@
 import {
+  generateControllerPath,
   generateFactoryPath,
   generateMiddlewarePath,
   generateRepositoryPath,
@@ -82,6 +83,21 @@ describe("#Constants", () => {
       process.env.NODE_ENV = "dev";
       const expected = "src/infra/http/service";
       const result = generateServicePath();
+      expect(result).toStrictEqual(expected);
+    });
+  });
+
+  describe("#generateControllerPath", () => {
+    it('should return a "test path" if environment is test', () => {
+      const expected = "test/integration/temp/src/presentation/controllers";
+      const result = generateControllerPath();
+      expect(result).toStrictEqual(expected);
+    });
+
+    it('should return a "production path" if environment is production', () => {
+      process.env.NODE_ENV = "dev";
+      const expected = "src/presentation/controllers";
+      const result = generateControllerPath();
       expect(result).toStrictEqual(expected);
     });
   });
