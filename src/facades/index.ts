@@ -6,3 +6,4 @@ export * from "./service-template-facade";
 export * from "./controller-template-facade";
 export * from "./data-protocol-template-facade";
 export * from "./domain-usecase-template-facade";
+export * from "./mongo-model-template-facade";
