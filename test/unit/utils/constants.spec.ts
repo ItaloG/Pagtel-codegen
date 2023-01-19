@@ -4,6 +4,7 @@ import {
   generateDomainUsecasePath,
   generateFactoryPath,
   generateMiddlewarePath,
+  generateMongoModelPath,
   generateRepositoryPath,
   generateServicePath,
   generateUsecasePath,
@@ -130,6 +131,21 @@ describe("#Constants", () => {
       process.env.NODE_ENV = "dev";
       const expected = "src/domain/usecases";
       const result = generateDomainUsecasePath();
+      expect(result).toStrictEqual(expected);
+    });
+  });
+
+  describe("#generateMongoModelPath", () => {
+    it('should return a "test path" if environment is test', () => {
+      const expected = "test/integration/temp/src/infra/db/mongodb";
+      const result = generateMongoModelPath();
+      expect(result).toStrictEqual(expected);
+    });
+
+    it('should return a "production path" if environment is production', () => {
+      process.env.NODE_ENV = "dev";
+      const expected = "src/infra/db/mongodb";
+      const result = generateMongoModelPath();
       expect(result).toStrictEqual(expected);
     });
   });
