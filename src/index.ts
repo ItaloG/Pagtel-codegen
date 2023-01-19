@@ -6,6 +6,7 @@ import { mapCommands } from "./config/map-commands";
 import {
   generateFactoryFacade,
   generateMiddlewareFacade,
+  generateRepositoryFacade,
   generateUsecaseFacade,
 } from "./facades";
 import { validateFields } from "./validations";
@@ -89,6 +90,38 @@ const {
       )
       .example("usecase -t db -n GetDog -s dog", "create a database usecase");
   })
+  .command("repository", "Generate a repository template", (builder) => {
+    return builder
+      .option("repository-type", {
+        alias: "t",
+        describe: "Type of repository",
+        choices: ["mssql", "mongo"],
+        demandOption: true,
+      })
+      .option("database", {
+        alias: "d",
+        describe: "Name of database",
+        type: "string",
+        demandOption: true,
+      })
+      .option("schema", {
+        alias: "s",
+        describe: "Folder where file will be generate",
+        type: "string",
+        demandOption: true,
+      })
+      .option("name", {
+        alias: "n",
+        describe: "Name of component",
+        type: "string",
+        demandOption: true,
+      })
+      .example(
+        "repository --repository-type mssql --name GetDog --scope dog",
+        "create a repository"
+      )
+      .example("repository -t mssql -n GetDog -s dog", "create a repository");
+  })
   .epilog("copyright ItaloG - Italo Gabriel 2022");
 
 const FIELDS_TO_VALIDATE = ["name", "scope"];
@@ -97,6 +130,7 @@ const TEMPLATE_GENERATORS = {
   factory: generateFactoryFacade,
   middleware: generateMiddlewareFacade,
   usecase: generateUsecaseFacade,
+  repository: generateRepositoryFacade,
 };
 
 // VALIDAR COMANDOS
