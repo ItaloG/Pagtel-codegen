@@ -23,3 +23,9 @@ export const generateRepositoryPath = (type: string): string => {
     ? `${TEST_TEMPLATE_DEFAULT_PATH}/infra/db/${type}`
     : `src/infra/db/${type}`;
 };
+
+export const generateServicePath = (): string => {
+  return process.env.NODE_ENV === "test"
+    ? `${TEST_TEMPLATE_DEFAULT_PATH}/infra/http/service`
+    : `src/infra/http/service`;
+};
