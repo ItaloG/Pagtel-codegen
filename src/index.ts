@@ -4,6 +4,7 @@ import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import { mapCommands } from "./config/map-commands";
 import {
+  generateControllerFacade,
   generateFactoryFacade,
   generateMiddlewareFacade,
   generateRepositoryFacade,
@@ -64,6 +65,23 @@ const {
       })
       .example("middleware --name GetDog --scope dog", "create a middleware")
       .example("middleware -n GetDog -s dog", "create a middleware");
+  })
+  .command("controller", "Generate a controller template", (builder) => {
+    return builder
+      .option("name", {
+        alias: "n",
+        describe: "Name of component",
+        type: "string",
+        demandOption: true,
+      })
+      .option("scope", {
+        alias: "s",
+        describe: "Folder where file will be generate",
+        type: "string",
+        demandOption: true,
+      })
+      .example("controller --name GetDog --scope dog", "create a controller")
+      .example("controller -n GetDog -s dog", "create a controller");
   })
   .command("usecase", "Generate a usecase template", (builder) => {
     return builder
@@ -148,6 +166,7 @@ const {
 const REQUIRED_FIELDS: any = {
   factory: ["name", "scope"],
   middleware: ["name", "scope"],
+  controller: ["name", "scope"],
   usecase: ["name", "scope"],
   repository: ["name", "database", "schema"],
   service: ["name", "scope"],
@@ -155,6 +174,7 @@ const REQUIRED_FIELDS: any = {
 const TEMPLATE_GENERATORS = {
   factory: generateFactoryFacade,
   middleware: generateMiddlewareFacade,
+  controller: generateControllerFacade,
   usecase: generateUsecaseFacade,
   repository: generateRepositoryFacade,
   service: generateServiceFacade,
