@@ -1,15 +1,11 @@
 export function logger({ message, type }: Params) {
-  const colors = {
-    info: "yellow",
-    error: "red",
-    success: "lightgreen",
+  const tags = {
+    info: "[INFO]".yellow,
+    error: "[ERROR]".red,
+    success: "[SUCCESS]".green,
   };
 
-  return console.log(
-    `%c${type} %c${message}`,
-    `color: ${colors[type]}`,
-    "color: white"
-  );
+  return console.log(tags[type], message);
 }
 
 type Params = {

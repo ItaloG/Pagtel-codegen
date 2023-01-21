@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import yargs from "yargs";
+import colors from "colors";
 import { hideBin } from "yargs/helpers";
 import { app } from "./config";
 
@@ -157,4 +158,7 @@ const {
   })
   .epilog("copyright ItaloG - Italo Gabriel 2022");
 
-await app(args, command);
+colors.enable();
+(async () => {
+  await app(args, command);
+})();
