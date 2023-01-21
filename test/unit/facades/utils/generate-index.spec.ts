@@ -1,4 +1,4 @@
-import { File } from "@/file";
+import { File } from "@/utils";
 import { generateIndex } from "@/facades/utils";
 
 describe("#Generate index", () => {

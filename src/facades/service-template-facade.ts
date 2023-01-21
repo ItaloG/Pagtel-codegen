@@ -1,7 +1,5 @@
-import { File } from "@/file";
-import { Folder } from "@/folder";
 import { generateServiceTemplate } from "@/templates";
-import { FormatString, generateServicePath } from "@/utils";
+import { FormatString, generateServicePath, File, Folder } from "@/utils";
 import { generateIndex } from "./utils";
 
 export async function generateServiceFacade({

@@ -1,7 +1,5 @@
-import { File } from "@/file";
-import { Folder } from "@/folder";
 import { generateMiddlewareTemplate } from "@/templates";
-import { FormatString, generateMiddlewarePath } from "@/utils";
+import { FormatString, generateMiddlewarePath, File, Folder } from "@/utils";
 import { generateIndex } from "./utils";
 
 export async function generateMiddlewareFacade({

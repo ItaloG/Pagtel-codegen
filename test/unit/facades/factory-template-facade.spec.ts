@@ -1,6 +1,6 @@
 import { generateFactoryFacade } from "@/facades";
-import { File } from "@/file";
-import { Folder } from "@/folder";
+import { File } from "@/utils";
+import { Folder } from "@/utils";
 
 describe("#Factory Facade", () => {
   beforeAll(() => {

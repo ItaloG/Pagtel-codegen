@@ -1,7 +1,5 @@
-import { File } from "@/file";
-import { Folder } from "@/folder";
+import { File, Folder, FormatString, generateMongoModelPath } from "@/utils";
 import { generateMongoModelTemplate } from "@/templates";
-import { FormatString, generateMongoModelPath } from "@/utils";
 
 export async function generateMongoModelFacade({
   name,

@@ -1,6 +1,5 @@
-import { File } from "@/file";
 import { generateRepositoryTemplate } from "@/templates";
-import { FormatString, generateRepositoryPath } from "@/utils";
+import { FormatString, generateRepositoryPath, File } from "@/utils";
 import {
   generateIndex,
   validateMongodbFolder,

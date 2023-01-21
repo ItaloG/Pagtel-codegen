@@ -1,6 +1,6 @@
 import fsPromises from "node:fs/promises";
 import fs from "node:fs";
-import { Folder } from "@/folder";
+import { Folder } from "@/utils";
 
 describe("#Folder", () => {
   test("#verifyExists should return true if folder exists", async () => {

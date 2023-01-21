@@ -1,5 +1,5 @@
 import { validateMongodbFolder, validateMssqlFolder } from "@/facades/utils";
-import { Folder } from "@/folder";
+import { Folder } from "@/utils";
 
 describe("#Repository Folder Validations", () => {
   beforeAll(() => {

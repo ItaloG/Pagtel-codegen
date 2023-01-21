@@ -1,4 +1,4 @@
-import { File } from "@/file";
+import { File } from "@/utils";
 
 export const generateIndex = async (
   path: string,

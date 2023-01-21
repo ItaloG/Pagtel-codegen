@@ -1,7 +1,5 @@
-import { File } from "@/file";
-import { Folder } from "@/folder";
+import { File, Folder, FormatString, generateDataProtocolPath } from "@/utils";
 import { generateDataProtocolTemplate } from "@/templates";
-import { FormatString, generateDataProtocolPath } from "@/utils";
 import { generateIndex } from "./utils";
 
 export async function generateDataProtocolFacade({

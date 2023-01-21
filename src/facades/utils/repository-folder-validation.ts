@@ -1,4 +1,4 @@
-import { Folder } from "@/folder";
+import { Folder } from "@/utils";
 
 export async function validateMssqlFolder({
   mainPath,
