@@ -2,19 +2,13 @@
 
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import { mapCommands } from "./config/map-commands";
-import {
-  generateControllerFacade,
-  generateFactoryFacade,
-  generateMiddlewareFacade,
-  generateRepositoryFacade,
-  generateServiceFacade,
-  generateUsecaseFacade,
-} from "./facades";
-import { validateFields } from "./validations";
+import { app } from "./config";
 
 const {
-  argv: { _: commands, ...args },
+  argv: {
+    _: [command],
+    ...args
+  },
 }: any = yargs(hideBin(process.argv))
   .command("factory", "Generate a factory template", (builder) => {
     return builder
@@ -163,32 +157,4 @@ const {
   })
   .epilog("copyright ItaloG - Italo Gabriel 2022");
 
-const REQUIRED_FIELDS: any = {
-  factory: ["name", "scope"],
-  middleware: ["name", "scope"],
-  controller: ["name", "scope"],
-  usecase: ["name", "scope"],
-  repository: ["name", "database", "schema"],
-  service: ["name", "scope"],
-};
-const TEMPLATE_GENERATORS = {
-  factory: generateFactoryFacade,
-  middleware: generateMiddlewareFacade,
-  controller: generateControllerFacade,
-  usecase: generateUsecaseFacade,
-  repository: generateRepositoryFacade,
-  service: generateServiceFacade,
-};
-
-// VALIDAR COMANDOS
-// ADICIONAR LOGGER
-
-try {
-  const FIELDS_TO_VALIDATE = REQUIRED_FIELDS[commands[0]];
-  validateFields(FIELDS_TO_VALIDATE, args);
-  mapCommands(TEMPLATE_GENERATORS, commands, args);
-} catch (error) {
-  console.log(error);
-
-  console.log(`\n ${error.message}`);
-}
+await app(args, command);

@@ -1,1 +1,2 @@
-export * from "./map-commands";
+export * from "./handlers/factory-handler";
+export * from "./app";
