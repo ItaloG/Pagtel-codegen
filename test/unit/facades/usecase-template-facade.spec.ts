@@ -1,6 +1,5 @@
 import { generateUsecaseFacade } from "@/facades";
-import { File } from "@/utils";
-import { Folder } from "@/utils";
+import { File, Folder } from "@/utils";
 
 describe("#Usecase Facade", () => {
   beforeAll(() => {

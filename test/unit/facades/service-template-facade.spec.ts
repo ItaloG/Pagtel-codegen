@@ -1,6 +1,5 @@
 import { generateServiceFacade } from "@/facades";
-import { File } from "@/utils";
-import { Folder } from "@/utils";
+import { File, Folder } from "@/utils";
 
 describe("#Service Facade", () => {
   beforeAll(() => {

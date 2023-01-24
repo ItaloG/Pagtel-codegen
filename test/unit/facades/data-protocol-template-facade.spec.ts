@@ -1,6 +1,5 @@
 import { generateDataProtocolFacade } from "@/facades";
-import { File } from "@/utils";
-import { Folder } from "@/utils";
+import { File, Folder } from "@/utils";
 
 describe("#Data Protocol Facade", () => {
   beforeAll(() => {

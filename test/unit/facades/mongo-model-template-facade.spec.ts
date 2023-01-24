@@ -1,6 +1,5 @@
 import { generateMongoModelFacade } from "@/facades";
-import { File } from "@/utils";
-import { Folder } from "@/utils";
+import { File, Folder } from "@/utils";
 
 describe("#Mongo Model Facade", () => {
   beforeAll(() => {
