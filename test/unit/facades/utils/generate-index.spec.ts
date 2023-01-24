@@ -9,7 +9,7 @@ describe("#Generate index", () => {
 
     const expected = {
       filePath: "any_path",
-      fileContent: `export * from './any_name'`,
+      fileContent: `export * from './any_name';\n`,
     };
     await generateIndex("any_path", "any_name");
     expect(createSpy).toHaveBeenCalled();
