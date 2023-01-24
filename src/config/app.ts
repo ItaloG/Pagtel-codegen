@@ -41,7 +41,11 @@ export async function app(args: object, command?: string) {
     const FIELDS_TO_VALIDATE = REQUIRED_FIELDS[command];
     validateFields(FIELDS_TO_VALIDATE, args);
 
-    return await HANDLERS[command]({ ...args });
+    const result: Array<{ type: any; message: string }> = await HANDLERS[
+      command
+    ]({ ...args });
+
+    return result.map(({ type, message }) => logger({ type, message }));
   } catch (error) {
     return logger({ type: "error", message: error.message });
   }
