@@ -10,8 +10,6 @@ import {
 } from "./handlers";
 
 export async function app(args: object, command?: string) {
-  // ADICIONAR LOGGER
-
   try {
     const REQUIRED_FIELDS: any = {
       factory: ["name", "scope"],
