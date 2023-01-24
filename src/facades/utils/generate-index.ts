@@ -6,6 +6,6 @@ export const generateIndex = async (
 ): Promise<void> => {
   await File.create({
     filePath: path,
-    fileContent: `export * from './${name}'`,
+    fileContent: `export * from './${name}';\n`,
   });
 };
