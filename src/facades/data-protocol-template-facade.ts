@@ -33,9 +33,13 @@ export async function generateDataProtocolFacade({
       newFolder: FORMATTED_SCOPE,
     });
 
+  const indexContent =
+    protocolType === "db"
+      ? `${TEMPLATE_NAME}-repository`
+      : `${TEMPLATE_NAME}-service`;
   await generateIndex(
     `${DATA_PROTOCOL_MAIN_PATH}/${FORMATTED_SCOPE}/index.ts`,
-    TEMPLATE_NAME
+    indexContent
   );
 
   const { template } = generateDataProtocolTemplate({
