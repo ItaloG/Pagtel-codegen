@@ -19,10 +19,13 @@ describe("#Integration Mongo Model Facade", () => {
     const MAIN_PATH = generateMongoModelPath();
 
     const templatePath = `${MAIN_PATH}/${data.scope.toLowerCase()}/get-dog-model.ts`;
+    const indexScopePath = `${MAIN_PATH}/index.ts`;
 
     const templateResult = fs.existsSync(templatePath);
+    const indexScopeResult = fs.existsSync(indexScopePath);
     const expected = true;
 
     expect(templateResult).toStrictEqual(expected);
+    expect(indexScopeResult).toStrictEqual(expected);
   });
 });
