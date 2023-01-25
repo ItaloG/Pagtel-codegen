@@ -39,13 +39,22 @@ describe("#Data Protocol Facade", () => {
     jest.spyOn(Folder, "verifyExists").mockReturnValueOnce(false);
 
     const createFolderSpy = jest.spyOn(Folder, "create");
+    const createFileSpy = jest.spyOn(File, "create");
 
     await generateDataProtocolFacade({
       name: "any_name",
       scope: "any_scope",
       protocolType: "db",
     });
+
+    const expected = {
+      filePath: "test/integration/temp/src/data/protocols/db/index.ts",
+      fileContent: "export * from './any_scope';\n",
+    };
+
     expect(createFolderSpy).toHaveBeenCalled();
+    expect(createFileSpy).toHaveBeenCalled();
+    expect(createFileSpy).toHaveBeenNthCalledWith(1, expected);
   });
 
   it("should not create a folder if it not exists", async () => {

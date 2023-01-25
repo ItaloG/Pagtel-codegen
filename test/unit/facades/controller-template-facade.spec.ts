@@ -30,12 +30,21 @@ describe("#Controller Facade", () => {
     jest.spyOn(Folder, "verifyExists").mockReturnValueOnce(false);
 
     const createFolderSpy = jest.spyOn(Folder, "create");
+    const createFileSpy = jest.spyOn(File, "create");
 
     await generateControllerFacade({
       name: "any_name",
       scope: "any_scope",
     });
+
+    const expected = {
+      filePath: "test/integration/temp/src/presentation/controllers/index.ts",
+      fileContent: "export * from './any_scope';\n",
+    };
+
     expect(createFolderSpy).toHaveBeenCalled();
+    expect(createFileSpy).toHaveBeenCalled();
+    expect(createFileSpy).toHaveBeenNthCalledWith(1, expected);
   });
 
   it("should not create a folder if it not exists", async () => {

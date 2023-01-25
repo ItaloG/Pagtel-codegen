@@ -1,9 +1,10 @@
 import { validateMongodbFolder, validateMssqlFolder } from "@/facades/utils";
-import { Folder } from "@/utils";
+import { File, Folder } from "@/utils";
 
 describe("#Repository Folder Validations", () => {
   beforeAll(() => {
     jest.spyOn(Folder, "create").mockReturnValue(Promise.resolve());
+    jest.spyOn(File, "create").mockReturnValue(Promise.resolve());
   });
 
   afterAll(() => {

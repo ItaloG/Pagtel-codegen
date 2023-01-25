@@ -36,13 +36,22 @@ describe("#Factory Facade", () => {
     jest.spyOn(Folder, "verifyExists").mockReturnValueOnce(false);
 
     const createFolderSpy = jest.spyOn(Folder, "create");
+    const createFileSpy = jest.spyOn(File, "create");
 
     await generateFactoryFacade({
       name: "any_name",
       scope: "any_scope",
       factoryType: "middleware",
     });
+
+    const expected = {
+      filePath: "test/integration/temp/src/main/factories/middleware/index.ts",
+      fileContent: "export * from './any_scope';\n",
+    };
+
     expect(createFolderSpy).toHaveBeenCalled();
+    expect(createFileSpy).toHaveBeenCalled();
+    expect(createFileSpy).toHaveBeenNthCalledWith(1, expected);
   });
 
   it("should not create a folder if it not exists", async () => {

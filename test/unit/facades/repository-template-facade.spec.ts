@@ -44,6 +44,7 @@ describe("#Repository Facade", () => {
     jest.spyOn(Folder, "verifyExists").mockReturnValueOnce(false);
 
     const createFolderSpy = jest.spyOn(Folder, "create");
+    const createFileSpy = jest.spyOn(File, "create");
 
     await generateRepositoryFacade({
       name: "any_name",
@@ -51,7 +52,16 @@ describe("#Repository Facade", () => {
       schema: "any_schema",
       repositoryType: "mssql",
     });
+
+    const expected = {
+      filePath:
+        "test/integration/temp/src/infra/db/mssql/any_database/index.ts",
+      fileContent: "export * from './any_schema';\n",
+    };
+
     expect(createFolderSpy).toHaveBeenCalledTimes(2);
+    expect(createFileSpy).toHaveBeenCalled();
+    expect(createFileSpy).toHaveBeenNthCalledWith(1, expected);
   });
 
   it("if 'repositoryType' is mongodb should create a folder if it not exists", async () => {
@@ -59,6 +69,7 @@ describe("#Repository Facade", () => {
     jest.spyOn(Folder, "verifyExists").mockReturnValueOnce(false);
 
     const createFolderSpy = jest.spyOn(Folder, "create");
+    const createFileSpy = jest.spyOn(File, "create");
 
     await generateRepositoryFacade({
       name: "any_name",
@@ -66,7 +77,15 @@ describe("#Repository Facade", () => {
       schema: "any_schema",
       repositoryType: "mongodb",
     });
+
+    const expected = {
+      filePath: "test/integration/temp/src/infra/db/mongodb/index.ts",
+      fileContent: "export * from './any_name';\n",
+    };
+
     expect(createFolderSpy).toHaveBeenCalledTimes(1);
+    expect(createFileSpy).toHaveBeenCalled();
+    expect(createFileSpy).toHaveBeenNthCalledWith(1, expected);
   });
 
   it("should not create a folder if it not exists", async () => {
@@ -86,6 +105,7 @@ describe("#Repository Facade", () => {
 
   it("should create a repository template file", async () => {
     jest.spyOn(File, "verifyExists").mockReturnValueOnce(false);
+    jest.spyOn(Folder, "verifyExists").mockReturnValueOnce(true);
     jest.spyOn(Folder, "verifyExists").mockReturnValueOnce(true);
 
     const fileCreateSpy = jest.spyOn(File, "create");
