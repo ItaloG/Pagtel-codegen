@@ -1,5 +1,6 @@
 import { File, Folder, FormatString, generateMongoModelPath } from "@/utils";
 import { generateMongoModelTemplate } from "@/templates";
+import { generateIndex } from "./utils";
 
 export async function generateMongoModelFacade({
   name,
@@ -17,11 +18,14 @@ export async function generateMongoModelFacade({
   const scopeFolderExists = Folder.verifyExists({
     folder: `${MONGO_MODEL_MAIN_PATH}/${FORMATTED_SCOPE}`,
   });
-  if (!scopeFolderExists)
+  if (!scopeFolderExists) {
     await Folder.create({
       mainPath: MONGO_MODEL_MAIN_PATH,
       newFolder: FORMATTED_SCOPE,
     });
+
+    await generateIndex(`${MONGO_MODEL_MAIN_PATH}/index.ts`, FORMATTED_SCOPE);
+  }
 
   const { template } = generateMongoModelTemplate({
     componentName: name,

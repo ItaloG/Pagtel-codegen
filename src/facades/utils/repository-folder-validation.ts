@@ -1,4 +1,5 @@
 import { Folder } from "@/utils";
+import { generateIndex } from "./generate-index";
 
 export async function validateMssqlFolder({
   mainPath,
@@ -21,11 +22,14 @@ export async function validateMssqlFolder({
   const schemaFolderExists = Folder.verifyExists({
     folder: `${mainPath}/${database}/${schema}`,
   });
-  if (!schemaFolderExists)
+  if (!schemaFolderExists) {
     await Folder.create({
       mainPath: `${mainPath}/${database}`,
       newFolder: schema,
     });
+
+    await generateIndex(`${mainPath}/${database}/index.ts`, schema);
+  }
 }
 
 export async function validateMongodbFolder({
@@ -38,9 +42,12 @@ export async function validateMongodbFolder({
   const scopeFolderExists = Folder.verifyExists({
     folder: `${mainPath}/${scope}`,
   });
-  if (!scopeFolderExists)
+  if (!scopeFolderExists) {
     await Folder.create({
       mainPath: `${mainPath}`,
       newFolder: scope,
     });
+
+    await generateIndex(`${mainPath}/index.ts`, scope);
+  }
 }

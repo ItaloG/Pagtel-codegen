@@ -24,11 +24,14 @@ export async function generateFactoryFacade({
   const scopeFolderExists = Folder.verifyExists({
     folder: `${FACTORY_MAIN_PATH}/${FORMATTED_SCOPE}`,
   });
-  if (!scopeFolderExists)
+  if (!scopeFolderExists) {
     await Folder.create({
       mainPath: FACTORY_MAIN_PATH,
       newFolder: FORMATTED_SCOPE,
     });
+
+    await generateIndex(`${FACTORY_MAIN_PATH}/index.ts`, FORMATTED_SCOPE);
+  }
 
   await generateIndex(
     `${FACTORY_MAIN_PATH}/${FORMATTED_SCOPE}/index.ts`,

@@ -23,11 +23,14 @@ export async function generateUsecaseFacade({
   const scopeFolderExists = Folder.verifyExists({
     folder: `${USECASE_MAIN_PATH}/${FORMATTED_SCOPE}`,
   });
-  if (!scopeFolderExists)
+  if (!scopeFolderExists) {
     await Folder.create({
       mainPath: USECASE_MAIN_PATH,
       newFolder: FORMATTED_SCOPE,
     });
+
+    await generateIndex(`${USECASE_MAIN_PATH}/index.ts`, FORMATTED_SCOPE);
+  }
 
   await generateIndex(
     `${USECASE_MAIN_PATH}/${FORMATTED_SCOPE}/index.ts`,

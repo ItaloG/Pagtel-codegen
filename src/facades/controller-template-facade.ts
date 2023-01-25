@@ -18,11 +18,14 @@ export async function generateControllerFacade({
   const scopeFolderExists = Folder.verifyExists({
     folder: `${CONTROLLER_MAIN_PATH}/${FORMATTED_SCOPE}`,
   });
-  if (!scopeFolderExists)
+  if (!scopeFolderExists) {
     await Folder.create({
       mainPath: CONTROLLER_MAIN_PATH,
       newFolder: FORMATTED_SCOPE,
     });
+
+    await generateIndex(`${CONTROLLER_MAIN_PATH}/index.ts`, FORMATTED_SCOPE);
+  }
 
   await generateIndex(
     `${CONTROLLER_MAIN_PATH}/${FORMATTED_SCOPE}/index.ts`,

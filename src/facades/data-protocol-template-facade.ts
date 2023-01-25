@@ -27,11 +27,14 @@ export async function generateDataProtocolFacade({
   const scopeFolderExists = Folder.verifyExists({
     folder: `${DATA_PROTOCOL_MAIN_PATH}/${FORMATTED_SCOPE}`,
   });
-  if (!scopeFolderExists)
+  if (!scopeFolderExists) {
     await Folder.create({
       mainPath: DATA_PROTOCOL_MAIN_PATH,
       newFolder: FORMATTED_SCOPE,
     });
+
+    await generateIndex(`${DATA_PROTOCOL_MAIN_PATH}/index.ts`, FORMATTED_SCOPE);
+  }
 
   const indexContent =
     protocolType === "db"

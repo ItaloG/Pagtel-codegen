@@ -18,11 +18,14 @@ export async function generateServiceFacade({
   const scopeFolderExists = Folder.verifyExists({
     folder: `${SERVICE_MAIN_PATH}/${FORMATTED_SCOPE}`,
   });
-  if (!scopeFolderExists)
+  if (!scopeFolderExists) {
     await Folder.create({
       mainPath: SERVICE_MAIN_PATH,
       newFolder: FORMATTED_SCOPE,
     });
+
+    await generateIndex(`${SERVICE_MAIN_PATH}/index.ts`, FORMATTED_SCOPE);
+  }
 
   await generateIndex(
     `${SERVICE_MAIN_PATH}/${FORMATTED_SCOPE}/index.ts`,

@@ -18,11 +18,14 @@ export async function generateMiddlewareFacade({
   const scopeFolderExists = Folder.verifyExists({
     folder: `${MIDDLEWARE_MAIN_PATH}/${FORMATTED_SCOPE}`,
   });
-  if (!scopeFolderExists)
+  if (!scopeFolderExists) {
     await Folder.create({
       mainPath: MIDDLEWARE_MAIN_PATH,
       newFolder: FORMATTED_SCOPE,
     });
+
+    await generateIndex(`${MIDDLEWARE_MAIN_PATH}/index.ts`, FORMATTED_SCOPE);
+  }
 
   await generateIndex(
     `${MIDDLEWARE_MAIN_PATH}/${FORMATTED_SCOPE}/index.ts`,
