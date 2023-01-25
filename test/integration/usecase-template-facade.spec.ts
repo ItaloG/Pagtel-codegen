@@ -21,13 +21,16 @@ describe("#Integration Usecase Facade", () => {
     const MAIN_PATH = generateUsecasePath(type);
 
     const templatePath = `${MAIN_PATH}/${data.scope.toLowerCase()}/db-get-dog.ts`;
+    const indexScopePath = `${MAIN_PATH}/index.ts`;
     const indexPath = `${MAIN_PATH}/${data.scope.toLowerCase()}/index.ts`;
 
     const templateResult = fs.existsSync(templatePath);
+    const indexScopeResult = fs.existsSync(indexScopePath);
     const indexResult = fs.existsSync(indexPath);
     const expected = true;
 
     expect(templateResult).toStrictEqual(expected);
+    expect(indexScopeResult).toStrictEqual(expected);
     expect(indexResult).toStrictEqual(expected);
   });
 
@@ -42,13 +45,16 @@ describe("#Integration Usecase Facade", () => {
     const MAIN_PATH = generateUsecasePath(type);
 
     const templatePath = `${MAIN_PATH}/${data.scope.toLowerCase()}/http-get-dog.ts`;
+    const indexScopePath = `${MAIN_PATH}/index.ts`;
     const indexPath = `${MAIN_PATH}/${data.scope.toLowerCase()}/index.ts`;
 
     const templateResult = fs.existsSync(templatePath);
+    const indexScopeResult = fs.existsSync(indexScopePath);
     const indexResult = fs.existsSync(indexPath);
     const expected = true;
 
     expect(templateResult).toStrictEqual(expected);
+    expect(indexScopeResult).toStrictEqual(expected);
     expect(indexResult).toStrictEqual(expected);
   });
 
@@ -63,13 +69,16 @@ describe("#Integration Usecase Facade", () => {
     const MAIN_PATH = generateUsecasePath(type);
 
     const templatePath = `${MAIN_PATH}/${data.scope.toLowerCase()}/mq-get-dog.ts`;
+    const indexScopePath = `${MAIN_PATH}/index.ts`;
     const indexPath = `${MAIN_PATH}/${data.scope.toLowerCase()}/index.ts`;
 
     const templateResult = fs.existsSync(templatePath);
+    const indexScopeResult = fs.existsSync(indexScopePath);
     const indexResult = fs.existsSync(indexPath);
     const expected = true;
 
     expect(templateResult).toStrictEqual(expected);
+    expect(indexScopeResult).toStrictEqual(expected);
     expect(indexResult).toStrictEqual(expected);
   });
 });
