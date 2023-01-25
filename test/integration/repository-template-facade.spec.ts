@@ -21,13 +21,16 @@ describe("#Integration Repository Facade", () => {
     const MAIN_PATH = generateRepositoryPath(type);
 
     const templatePath = `${MAIN_PATH}/${data.database.toLowerCase()}/${data.schema.toLowerCase()}/get-dog-repository.ts`;
+    const indexScopePath = `${MAIN_PATH}/${data.database.toLowerCase()}/index.ts`;
     const indexPath = `${MAIN_PATH}/${data.database.toLowerCase()}/${data.schema.toLowerCase()}/index.ts`;
 
     const templateResult = fs.existsSync(templatePath);
+    const indexScopeResult = fs.existsSync(indexScopePath);
     const indexResult = fs.existsSync(indexPath);
     const expected = true;
 
     expect(templateResult).toStrictEqual(expected);
+    expect(indexScopeResult).toStrictEqual(expected);
     expect(indexResult).toStrictEqual(expected);
   });
 
@@ -44,13 +47,16 @@ describe("#Integration Repository Facade", () => {
     const formattedName = FormatString.convertToKebabCase(data.name);
 
     const templatePath = `${MAIN_PATH}/${formattedName}/get-dog-repository.ts`;
+    const indexScopePath = `${MAIN_PATH}/index.ts`;
     const indexPath = `${MAIN_PATH}/${formattedName}/index.ts`;
 
     const templateResult = fs.existsSync(templatePath);
+    const indexScopeResult = fs.existsSync(indexScopePath);
     const indexResult = fs.existsSync(indexPath);
     const expected = true;
 
     expect(templateResult).toStrictEqual(expected);
+    expect(indexScopeResult).toStrictEqual(expected);
     expect(indexResult).toStrictEqual(expected);
   });
 });
