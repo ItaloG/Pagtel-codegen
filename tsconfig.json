@@ -5,6 +5,10 @@
     "module": "CommonJS",
     "outDir": "./dist",
     "moduleResolution": "Node",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types"
+    ],
     "removeComments": true,
     "allowJs": true,
     "resolveJsonModule": true,
