@@ -1,23 +1,38 @@
+# Install
+
+``` bash
+npm install -G @italog/codegen
+```
+
+## Usage
+
+**--help** show all commands
+``` bash
+npx codegen --help
+```
+
 *****
 
-## Examples
+## Commands
 
-- middleware factory: `project generate --factory-middleware --name GetExample --scope example`
-- controller factory: `project generate --factory-controller --name GetExample --scope example`
-- middleware: `project generate --middleware --name GetExample --scope example`
-- useCase: `project generate --usecase --type db --name GetExample --scope example`
-- repository: `project generate --repository --type mssql --database example --schema example`
-- service: `project generate --service --scope example`
+- factory: Generate a factory with middleware/controller;
+- middleware: Generate a middleware with DomainUseCase;
+- controller: Generate a controller;
+- useCase: Generate a usecase with DomainUseCase and DataProtocol;
+- repository: Generate a repository extending the Repository class;
+- service: Generate a service with DataProtocol;
+
+### Examples
+
+- factory: `npx codegen factory --factory-type middleware --name GetDog --scope dog`; [Factory types](#factorytypes)
+- middleware: `npx codegen middleware --name GetDog --scope dog`;
+- controller: `npx codegen controller --name GetDog --scope dog`;
+- useCase: `npx codegen usecase --usecase-type db --name GetDog --scope dog`; [UseCase types](#usecasetypes)
+- repository: `npx codegen repository --repository-type mssql --database Animal --schema mammals --name dog`; [Repository types](#repositorytypes)
+- service: `npx codegen service --name GetDog --scope dog`;
+
 
 *****
-
-## Filetypes
-
-- factory
-- middleware
-- useCase
-- repository
-- service
 
 ## UseCaseTypes
 
@@ -25,7 +40,7 @@
 - http
 - mq
 
-## DatabaseTypes
+## RepositoryTypes
 
 - mssql
 - mongo

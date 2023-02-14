@@ -131,11 +131,11 @@ const {
         demandOption: true,
       })
       .example(
-        "repository --repository-type mssql --name GetDog --scope dog",
+        "repository --repository-type mssql --database Animal --schema mammals --name dog",
         "create a repository"
       )
       .example(
-        "repository -t mssql -n GetDog -d dog -s dog",
+        "repository -t mssql -d Animal -s mammals -n dog",
         "create a repository"
       );
   })
