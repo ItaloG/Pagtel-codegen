@@ -12,13 +12,14 @@ export async function usecaseHandler({
   const promises = [];
 
   promises.push(generateUsecaseFacade({ name, scope, usecaseType }));
-  promises.push(
-    generateDataProtocolFacade({
-      name,
-      scope,
-      protocolType: <"db" | "http">usecaseType,
-    })
-  );
+  if (usecaseType !== "mq")
+    promises.push(
+      generateDataProtocolFacade({
+        name,
+        scope,
+        protocolType: usecaseType,
+      })
+    );
   promises.push(generateDomainUsecaseFacade({ name, scope }));
 
   const result = await Promise.all(promises);

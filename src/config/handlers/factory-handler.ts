@@ -17,9 +17,7 @@ export async function factoryHandler({
   if (factoryType === "middleware") {
     promises.push(generateMiddlewareFacade({ name, scope }));
     promises.push(generateDomainUsecaseFacade({ name, scope }));
-  }
-
-  promises.push(generateControllerFacade({ name, scope }));
+  } else promises.push(generateControllerFacade({ name, scope }));
 
   const result = await Promise.all(promises);
 
