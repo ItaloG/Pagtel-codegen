@@ -18,7 +18,7 @@ export class CreateExampleMiddleware implements Middleware {
       throw new Error('CreateExampleMiddleware not implemented')
       return next();
     } catch (error) {
-      await this.errorHandler.handle(error, state.transactions);
+      await this.errorHandler.handle(error);
       switch (error.message) {
         default:
           return serverError(error);
