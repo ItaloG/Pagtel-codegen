@@ -18,7 +18,7 @@ describe("#Integration Service Facade", () => {
 
     const MAIN_PATH = generateServicePath();
 
-    const templatePath = `${MAIN_PATH}/${data.scope.toLowerCase()}/get-dog.ts`;
+    const templatePath = `${MAIN_PATH}/${data.scope.toLowerCase()}/get-dog-service.ts`;
     const indexScopePath = `${MAIN_PATH}/index.ts`;
     const indexPath = `${MAIN_PATH}/${data.scope.toLowerCase()}/index.ts`;
 
