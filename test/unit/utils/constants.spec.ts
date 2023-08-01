@@ -3,6 +3,7 @@ import {
   generateDataProtocolPath,
   generateDomainUsecasePath,
   generateFactoryPath,
+  generateJobPath,
   generateMiddlewarePath,
   generateMongoModelPath,
   generateRepositoryPath,
@@ -41,6 +42,21 @@ describe("#Constants", () => {
       process.env.NODE_ENV = "dev";
       const expected = "src/presentation/middlewares";
       const result = generateMiddlewarePath();
+      expect(result).toStrictEqual(expected);
+    });
+  });
+
+  describe("#generateJobPath", () => {
+    it('should return a "test path" if environment is test', () => {
+      const expected = "test/integration/temp/src/job/jobs";
+      const result = generateJobPath();
+      expect(result).toStrictEqual(expected);
+    });
+
+    it('should return a "production path" if environment is production', () => {
+      process.env.NODE_ENV = "dev";
+      const expected = "src/job/jobs";
+      const result = generateJobPath();
       expect(result).toStrictEqual(expected);
     });
   });

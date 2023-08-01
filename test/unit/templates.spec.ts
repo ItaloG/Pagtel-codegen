@@ -4,6 +4,7 @@ import {
   generateDataUsecaseTemplate,
   generateDomainUsecaseTemplate,
   generateFactoryTemplate,
+  generateJobTemplate,
   generateMiddlewareTemplate,
   generateRepositoryTemplate,
   generateServiceTemplate,
@@ -24,6 +25,8 @@ import {
   serviceTemplateMock,
   controllerTemplateMock,
   mongoModelTemplateMock,
+  jobTemplateMock,
+  jobFactoryTemplateMock,
 } from "./mocks";
 
 describe("#Template Generator", () => {
@@ -50,6 +53,18 @@ describe("#Template Generator", () => {
       const result = generateFactoryTemplate({
         componentName,
         componentType: "controller",
+      });
+      expect(result).toStrictEqual(expected);
+    });
+
+    it("should generate job factory template", () => {
+      const expected = {
+        template: jobFactoryTemplateMock,
+      };
+
+      const result = generateFactoryTemplate({
+        componentName,
+        componentType: "job",
       });
       expect(result).toStrictEqual(expected);
     });
@@ -254,6 +269,16 @@ describe("#Template Generator", () => {
       const result = generateMongoModelTemplate({
         componentName,
       });
+      expect(result).toStrictEqual(expected);
+    });
+  });
+
+  describe("#generateJobTemplate", () => {
+    it("should generate a job template", () => {
+      const expected = {
+        template: jobTemplateMock,
+      };
+      const result = generateJobTemplate({ componentName });
       expect(result).toStrictEqual(expected);
     });
   });

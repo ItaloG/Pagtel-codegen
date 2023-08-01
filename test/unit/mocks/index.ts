@@ -12,3 +12,5 @@ export * from "./data-protocol-http-template";
 export * from "./service-template";
 export * from "./controller-template";
 export * from "./mongo-model-template";
+export * from "./job-template";
+export * from "./job-factory-template";
