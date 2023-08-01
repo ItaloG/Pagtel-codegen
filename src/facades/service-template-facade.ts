@@ -8,7 +8,7 @@ export async function generateServiceFacade({
 }: ServiceFacade.Params): ServiceFacade.Result {
   const SERVICE_MAIN_PATH = generateServicePath();
   const FORMATTED_SCOPE = FormatString.convertToKebabCase(scope);
-  const TEMPLATE_NAME = FormatString.convertToKebabCase(name);
+  const TEMPLATE_NAME = `${FormatString.convertToKebabCase(name)}-service`;
   const TEMPLATE_FILE_PATH = `${SERVICE_MAIN_PATH}/${FORMATTED_SCOPE}/${TEMPLATE_NAME}.ts`;
 
   const templateFileExists = File.verifyExists({ file: TEMPLATE_FILE_PATH });
