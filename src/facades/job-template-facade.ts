@@ -1,4 +1,4 @@
-import { generateMiddlewareTemplate } from "@/templates";
+import { generateJobTemplate } from "@/templates";
 import { FormatString, File, Folder, generateJobPath } from "@/utils";
 import { generateIndex } from "./utils";
 
@@ -32,7 +32,7 @@ export async function generateJobFacade({
     TEMPLATE_NAME
   );
 
-  const { template } = generateMiddlewareTemplate({
+  const { template } = generateJobTemplate({
     componentName: name,
   });
 
