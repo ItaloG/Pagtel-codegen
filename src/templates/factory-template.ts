@@ -13,10 +13,9 @@ export const make$$componentNameMiddleware = () => {
 };`,
   controller: `
 import { $$componentNameController } from '@/presentation/controllers';
-import { commitAll } from '@/util';
 
 export const make$$componentNameController = () =>
-  new $$componentNameController(commitAll);`,
+  new $$componentNameController();`,
   job: `
 import { $$componentNameJob } from '@/job';
 
