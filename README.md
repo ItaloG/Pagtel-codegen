@@ -17,6 +17,7 @@ npx codegen --help
 
 - factory: Generate a factory with middleware/controller;
 - middleware: Generate a middleware with DomainUseCase;
+- job: Generate a job with DomainUseCase;
 - controller: Generate a controller;
 - useCase: Generate a usecase with DomainUseCase and DataProtocol;
 - repository: Generate a repository extending the Repository class;
@@ -26,6 +27,7 @@ npx codegen --help
 
 - factory: `npx codegen factory --factory-type middleware --name GetDog --scope dog`; [Factory types](#factorytypes)
 - middleware: `npx codegen middleware --name GetDog --scope dog`;
+- job: `npx codegen job --name GetDog --scope dog`;
 - controller: `npx codegen controller --name GetDog --scope dog`;
 - useCase: `npx codegen usecase --usecase-type db --name GetDog --scope dog`; [UseCase types](#usecasetypes)
 - repository: `npx codegen repository --repository-type mssql --database Animal --schema mammals --name dog`; [Repository types](#repositorytypes)
@@ -49,3 +51,4 @@ npx codegen --help
 
 - middleware
 - controller
+- job
