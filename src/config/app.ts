@@ -3,6 +3,7 @@ import { validateFields } from "../validations";
 import {
   controllerHandler,
   factoryHandler,
+  jobHandler,
   middlewareHandler,
   repositoryHandler,
   serviceHandler,
@@ -14,6 +15,7 @@ export async function app(args: object, command?: string) {
     const REQUIRED_FIELDS: any = {
       factory: ["name", "scope"],
       middleware: ["name", "scope"],
+      job: ["name", "scope"],
       controller: ["name", "scope"],
       usecase: ["name", "scope"],
       repository: ["name", "database", "schema"],
@@ -23,6 +25,7 @@ export async function app(args: object, command?: string) {
     const HANDLERS: any = {
       factory: factoryHandler,
       middleware: middlewareHandler,
+      job: jobHandler,
       controller: controllerHandler,
       usecase: usecaseHandler,
       repository: repositoryHandler,

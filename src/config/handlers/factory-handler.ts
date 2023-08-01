@@ -14,7 +14,7 @@ export async function factoryHandler({
 
   promises.push(generateFactoryFacade({ name, scope, factoryType }));
 
-  if (factoryType === "middleware") {
+  if (factoryType === "middleware" || factoryType === "job") {
     promises.push(generateMiddlewareFacade({ name, scope }));
     promises.push(generateDomainUsecaseFacade({ name, scope }));
   } else promises.push(generateControllerFacade({ name, scope }));
@@ -26,7 +26,7 @@ export async function factoryHandler({
 
 type Params = {
   name: string;
-  factoryType: "middleware" | "controller";
+  factoryType: "middleware" | "controller" | "job";
   scope: string;
 };
 

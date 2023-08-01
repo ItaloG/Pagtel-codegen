@@ -17,9 +17,17 @@ import { commitAll } from '@/util';
 
 export const make$$componentNameController = () =>
   new $$componentNameController(commitAll);`,
+  job: `
+import { $$componentNameJob } from '@/job';
+
+import { makeErrorHandler } from '../../usecases';
+
+export const make$$componentNameJob = () => {
+  return new $$componentNameJob(, makeErrorHandler());
+};`,
 };
 
-const FACTORY_TYPES = ["middleware", "controller"];
+const FACTORY_TYPES = ["middleware", "controller", "job"];
 
 export function generateFactoryTemplate({
   componentName,
@@ -43,7 +51,7 @@ export function generateFactoryTemplate({
 namespace FactoryTemplate {
   export type Params = {
     componentName: string;
-    componentType: "middleware" | "controller";
+    componentType: "middleware" | "controller" | "job";
   };
 
   export type Result = {

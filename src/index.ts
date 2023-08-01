@@ -16,7 +16,7 @@ const {
       .option("factory-type", {
         alias: "t",
         describe: "Type of factory",
-        choices: ["middleware", "controller"],
+        choices: ["middleware", "controller", "job"],
         demandOption: true,
       })
       .option("name", {
@@ -38,6 +38,10 @@ const {
       .example(
         "factory --factory-type controller --name GetDog --scope dog",
         "create a controller factory"
+      )
+      .example(
+        "factory --factory-type job --name GetDog --scope dog",
+        "create a job factory"
       )
       .example(
         "factory -t controller -n GetDog -s dog",
@@ -77,6 +81,23 @@ const {
       })
       .example("controller --name GetDog --scope dog", "create a controller")
       .example("controller -n GetDog -s dog", "create a controller");
+  })
+  .command("job", "Generate a job template", (builder) => {
+    return builder
+      .option("name", {
+        alias: "n",
+        describe: "Name of component",
+        type: "string",
+        demandOption: true,
+      })
+      .option("scope", {
+        alias: "s",
+        describe: "Folder where file will be generate",
+        type: "string",
+        demandOption: true,
+      })
+      .example("job --name GetDog --scope dog", "create a job")
+      .example("job -n GetDog -s dog", "create a job");
   })
   .command("usecase", "Generate a usecase template", (builder) => {
     return builder

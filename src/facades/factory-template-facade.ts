@@ -51,7 +51,7 @@ export async function generateFactoryFacade({
 namespace FactoryFacade {
   export type Params = {
     name: string;
-    factoryType?: "middleware" | "controller";
+    factoryType?: "middleware" | "controller" | "job";
     scope: string;
   };
   export type Result = Promise<{ type: string; message: string }>;
