@@ -2,6 +2,7 @@ import {
   generateControllerFacade,
   generateDomainUsecaseFacade,
   generateFactoryFacade,
+  generateJobFacade,
   generateMiddlewareFacade,
 } from "@/facades";
 
@@ -14,7 +15,8 @@ export async function factoryHandler({
 
   promises.push(generateFactoryFacade({ name, scope, factoryType }));
 
-  if (factoryType === "middleware" || factoryType === "job") {
+  if (factoryType === "job") promises.push(generateJobFacade({ name, scope }));
+  if (factoryType === "middleware") {
     promises.push(generateMiddlewareFacade({ name, scope }));
     promises.push(generateDomainUsecaseFacade({ name, scope }));
   } else promises.push(generateControllerFacade({ name, scope }));
