@@ -15,15 +15,25 @@ export async function factoryHandler({
 
   promises.push(generateFactoryFacade({ name, scope, factoryType }));
 
-  if (factoryType === "job") promises.push(generateJobFacade({ name, scope }));
-  if (factoryType === "middleware") {
-    promises.push(generateMiddlewareFacade({ name, scope }));
-    promises.push(generateDomainUsecaseFacade({ name, scope }));
-  } else promises.push(generateControllerFacade({ name, scope }));
+  switch (factoryType) {
+    case "job":
+      promises.push(generateJobFacade({ name, scope }));
+      promises.push(generateDomainUsecaseFacade({ name, scope }));
+      break;
+    case "middleware":
+      promises.push(generateMiddlewareFacade({ name, scope }));
+      promises.push(generateDomainUsecaseFacade({ name, scope }));
+      break;
+    case "controller":
+      promises.push(generateControllerFacade({ name, scope }));
+      break;
 
-  const result = await Promise.all(promises);
+    default:
+      promises.push(Promise.reject(new Error("Factory Type not allowed")));
+      break;
+  }
 
-  return result;
+  return Promise.all(promises);
 }
 
 type Params = {

@@ -180,6 +180,7 @@ const {
   .epilog("copyright ItaloG - Italo Gabriel 2022");
 
 colors.enable();
+
 (async () => {
   await app(args, command);
 })();

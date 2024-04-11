@@ -57,4 +57,28 @@ describe("#Integration Factory Facade", () => {
     expect(indexScopeResult).toStrictEqual(expected);
     expect(indexResult).toStrictEqual(expected);
   });
+
+  it("should generate a job factory", async () => {
+    const data = { name: "GetDog", scope: "Dog" };
+    const type = "job";
+    await generateFactoryFacade({
+      ...data,
+      factoryType: type,
+    });
+
+    const MAIN_PATH = generateFactoryPath(type);
+
+    const templatePath = `${MAIN_PATH}/${data.scope.toLowerCase()}/make-get-dog-job.ts`;
+    const indexScopePath = `${MAIN_PATH}/index.ts`;
+    const indexPath = `${MAIN_PATH}/${data.scope.toLowerCase()}/index.ts`;
+
+    const templateResult = fs.existsSync(templatePath);
+    const indexScopeResult = fs.existsSync(indexScopePath);
+    const indexResult = fs.existsSync(indexPath);
+    const expected = true;
+
+    expect(templateResult).toStrictEqual(expected);
+    expect(indexScopeResult).toStrictEqual(expected);
+    expect(indexResult).toStrictEqual(expected);
+  });
 });
