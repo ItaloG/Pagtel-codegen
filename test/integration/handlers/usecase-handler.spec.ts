@@ -145,4 +145,38 @@ describe("#Integration Usecase Handler", () => {
     expect(domainIndexScopeResult).toStrictEqual(domainExpected);
     expect(domainIndexResult).toStrictEqual(domainExpected);
   });
+
+  it("should generate OTHER Usecase and Domain Usecase on success", async () => {
+    const data: any = { name: "GetDog", scope: "Animal", usecaseType: "other" };
+    await usecaseHandler(data);
+
+    const USECASE_MAIN_PATH = generateUsecasePath(data.usecaseType);
+    const DOMAIN_MAIN_PATH = generateDomainUsecasePath();
+
+    const usecasePath = `${USECASE_MAIN_PATH}/${data.scope.toLowerCase()}/get-dog.ts`;
+    const usecaseIndexScopePath = `${USECASE_MAIN_PATH}/${data.scope.toLowerCase()}/index.ts`;
+    const usecaseIndexPath = `${USECASE_MAIN_PATH}/index.ts`;
+
+    const usecaseResult = fs.existsSync(usecasePath);
+    const usecaseIndexScopeResult = fs.existsSync(usecaseIndexScopePath);
+    const usecaseIndexResult = fs.existsSync(usecaseIndexPath);
+    const expected = true;
+
+    expect(usecaseResult).toStrictEqual(expected);
+    expect(usecaseIndexScopeResult).toStrictEqual(expected);
+    expect(usecaseIndexResult).toStrictEqual(expected);
+
+    const domainPath = `${DOMAIN_MAIN_PATH}/${data.scope.toLowerCase()}/get-dog.ts`;
+    const domainIndexScopePath = `${DOMAIN_MAIN_PATH}/index.ts`;
+    const domainIndexPath = `${DOMAIN_MAIN_PATH}/${data.scope.toLowerCase()}/index.ts`;
+
+    const domainTemplateResult = fs.existsSync(domainPath);
+    const domainIndexScopeResult = fs.existsSync(domainIndexScopePath);
+    const domainIndexResult = fs.existsSync(domainIndexPath);
+    const domainExpected = true;
+
+    expect(domainTemplateResult).toStrictEqual(domainExpected);
+    expect(domainIndexScopeResult).toStrictEqual(domainExpected);
+    expect(domainIndexResult).toStrictEqual(domainExpected);
+  });
 });

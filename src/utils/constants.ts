@@ -19,9 +19,10 @@ export const generateJobPath = (): string => {
 };
 
 export const generateUsecasePath = (type: string): string => {
-  return process.env.NODE_ENV === "test"
-    ? `${TEST_TEMPLATE_DEFAULT_PATH}/data/usecases/${type}`
-    : `src/data/usecases/${type}`;
+  if (process.env.NODE_ENV === "test")
+    return `${TEST_TEMPLATE_DEFAULT_PATH}/data/usecases/${type}`;
+
+  return type === "other" ? "src/data/usecases/" : `src/data/usecases/${type}`;
 };
 
 export const generateRepositoryPath = (type: string): string => {

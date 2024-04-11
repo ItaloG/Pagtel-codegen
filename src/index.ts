@@ -104,7 +104,7 @@ const {
       .option("usecase-type", {
         alias: "t",
         describe: "Type of usecase",
-        choices: ["db", "http", "mq"],
+        choices: ["db", "http", "mq", "other"],
         demandOption: true,
       })
       .option("name", {

@@ -11,9 +11,12 @@ export async function generateUsecaseFacade({
 
   const USECASE_MAIN_PATH = generateUsecasePath(usecaseType);
   const FORMATTED_SCOPE = FormatString.convertToKebabCase(scope);
-  const TEMPLATE_NAME = `${usecaseType}-${FormatString.convertToKebabCase(
-    name
-  )}`;
+
+  const TEMPLATE_NAME =
+    usecaseType === "other"
+      ? FormatString.convertToKebabCase(name)
+      : `${usecaseType}-${FormatString.convertToKebabCase(name)}`;
+
   const TEMPLATE_FILE_PATH = `${USECASE_MAIN_PATH}/${FORMATTED_SCOPE}/${TEMPLATE_NAME}.ts`;
 
   const templateFileExists = File.verifyExists({ file: TEMPLATE_FILE_PATH });
@@ -50,7 +53,7 @@ export async function generateUsecaseFacade({
 namespace UsecaseFacade {
   export type Params = {
     name: string;
-    usecaseType?: "db" | "http" | "mq";
+    usecaseType?: "db" | "http" | "mq" | "other";
     scope: string;
   };
   export type Result = Promise<{ type: string; message: string }>;

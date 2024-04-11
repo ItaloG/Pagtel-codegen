@@ -11,23 +11,24 @@ import {
 } from "@/templates";
 import { generateMongoModelTemplate } from "@/templates/mongo-model-template";
 import {
-  middlewareFactoryTemplateMock,
   controllerFactoryTemplateMock,
-  middlewareTemplateMock,
-  domainUsecaseTemplateMock,
+  controllerTemplateMock,
+  dataProtocolDbTemplateMock,
+  dataProtocolHttpTemplateMock,
   dataUsecaseDbTemplateMock,
   dataUsecaseHttpTemplateMock,
   dataUsecaseMqTemplateMock,
-  repositoryMssqlTemplateMock,
-  repositoryMongoTemplateMock,
-  dataProtocolDbTemplateMock,
-  dataProtocolHttpTemplateMock,
-  serviceTemplateMock,
-  controllerTemplateMock,
-  mongoModelTemplateMock,
-  jobTemplateMock,
+  domainUsecaseTemplateMock,
   jobFactoryTemplateMock,
+  jobTemplateMock,
+  middlewareFactoryTemplateMock,
+  middlewareTemplateMock,
+  mongoModelTemplateMock,
+  repositoryMongoTemplateMock,
+  repositoryMssqlTemplateMock,
+  serviceTemplateMock,
 } from "./mocks";
+import { dataUsecaseOtherTemplateMock } from "./mocks/data-usecase-other-template";
 
 describe("#Template Generator", () => {
   const componentName = "createExample";
@@ -139,6 +140,19 @@ describe("#Template Generator", () => {
       const result = generateDataUsecaseTemplate({
         componentName,
         componentType: "mq",
+      });
+
+      expect(result).toStrictEqual(expected);
+    });
+
+    it("should generate a data usecase other template", () => {
+      const expected = {
+        template: dataUsecaseOtherTemplateMock,
+      };
+
+      const result = generateDataUsecaseTemplate({
+        componentName,
+        componentType: "other",
       });
 
       expect(result).toStrictEqual(expected);

@@ -25,9 +25,15 @@ import { $$upperCaseComponentName } from '@/domain/usecases';
 export class Mq$$upperCaseComponentName implements $$upperCaseComponentName {
   constructor(private readonly publishInExchangeService: PublishInExchangeService) {}
 }`,
+  other: `
+import { $$upperCaseComponentName } from '@/domain/usecases';
+
+export class $$upperCaseComponentName implements $$upperCaseComponentName {
+  constructor() {}
+}`,
 };
 
-const USECASE_TYPES = ["db", "http", "mq"];
+const USECASE_TYPES = ["db", "http", "mq", "other"];
 
 export function generateDataUsecaseTemplate({
   componentName,
@@ -56,7 +62,7 @@ export function generateDataUsecaseTemplate({
 namespace DataUsecaseTemplate {
   export type Params = {
     componentName: string;
-    componentType: "db" | "http" | "mq";
+    componentType: "db" | "http" | "mq" | "other";
   };
 
   export type Result = {

@@ -11,25 +11,52 @@ export async function usecaseHandler({
 }: Params): Result {
   const promises = [];
 
-  promises.push(generateUsecaseFacade({ name, scope, usecaseType }));
-  if (usecaseType !== "mq")
-    promises.push(
-      generateDataProtocolFacade({
-        name,
-        scope,
-        protocolType: usecaseType,
-      })
-    );
-  promises.push(generateDomainUsecaseFacade({ name, scope }));
+  switch (usecaseType) {
+    case "db":
+      promises.push(generateUsecaseFacade({ name, scope, usecaseType }));
+      promises.push(
+        generateDataProtocolFacade({
+          name,
+          scope,
+          protocolType: usecaseType,
+        })
+      );
+      promises.push(generateDomainUsecaseFacade({ name, scope }));
+      break;
 
-  const result = await Promise.all(promises);
+    case "http":
+      promises.push(generateUsecaseFacade({ name, scope, usecaseType }));
+      promises.push(
+        generateDataProtocolFacade({
+          name,
+          scope,
+          protocolType: usecaseType,
+        })
+      );
+      promises.push(generateDomainUsecaseFacade({ name, scope }));
+      break;
 
-  return result;
+    case "mq":
+      promises.push(generateUsecaseFacade({ name, scope, usecaseType }));
+      promises.push(generateDomainUsecaseFacade({ name, scope }));
+      break;
+
+    case "other":
+      promises.push(generateUsecaseFacade({ name, scope, usecaseType }));
+      promises.push(generateDomainUsecaseFacade({ name, scope }));
+      break;
+
+    default:
+      promises.push(Promise.reject(new Error("Usecase Type not allowed")));
+      break;
+  }
+
+  return Promise.all(promises);
 }
 
 type Params = {
   name: string;
-  usecaseType: "db" | "http" | "mq";
+  usecaseType: "db" | "http" | "mq" | "other";
   scope: string;
 };
 
