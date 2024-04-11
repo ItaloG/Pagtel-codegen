@@ -8,15 +8,17 @@ export async function repositoryHandler({
 }: Params): Result {
   const promises = [];
 
-  promises.push(
-    generateRepositoryFacade({ name, database, schema, repositoryType })
-  );
-  if (repositoryType === "mongodb")
+  if (repositoryType === "mongodb") {
     promises.push(generateMongoModelFacade({ name, scope: database }));
+    promises.push(
+      generateRepositoryFacade({ name, database, schema, repositoryType })
+    );
+  } else
+    promises.push(
+      generateRepositoryFacade({ name, database, schema, repositoryType })
+    );
 
-  const result = await Promise.all(promises);
-
-  return result;
+  return Promise.all(promises);
 }
 
 type Params = {

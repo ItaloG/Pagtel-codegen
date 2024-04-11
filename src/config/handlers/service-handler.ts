@@ -8,9 +8,7 @@ export async function serviceHandler({ name, scope }: Params): Result {
     generateDataProtocolFacade({ name, scope, protocolType: "http" })
   );
 
-  const result = await Promise.all(promises);
-
-  return result;
+  return Promise.all(promises);
 }
 
 type Params = {

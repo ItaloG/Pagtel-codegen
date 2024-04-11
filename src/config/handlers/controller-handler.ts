@@ -5,9 +5,7 @@ export async function controllerHandler({ name, scope }: Params): Result {
 
   promises.push(generateControllerFacade({ name, scope }));
 
-  const result = await Promise.all(promises);
-
-  return result;
+  return Promise.all(promises);
 }
 
 type Params = {

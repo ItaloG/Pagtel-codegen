@@ -80,7 +80,7 @@ describe("#Repository Facade", () => {
 
     const expected = {
       filePath: "test/integration/temp/src/infra/db/mongodb/index.ts",
-      fileContent: "export * from './any_name';\n",
+      fileContent: "export * from './any_database';\n",
     };
 
     expect(createFolderSpy).toHaveBeenCalledTimes(1);

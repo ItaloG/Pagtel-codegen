@@ -6,9 +6,7 @@ export async function jobHandler({ name, scope }: Params): Result {
   promises.push(generateJobFacade({ name, scope }));
   promises.push(generateDomainUsecaseFacade({ name, scope }));
 
-  const result = await Promise.all(promises);
-
-  return result;
+  return Promise.all(promises);
 }
 
 type Params = {

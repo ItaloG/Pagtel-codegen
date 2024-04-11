@@ -17,7 +17,9 @@ export async function generateRepositoryFacade({
 
   const REPOSITORY_MAIN_PATH = generateRepositoryPath(repositoryType);
   const TEMPLATE_NAME = `${FormatString.convertToKebabCase(name)}-repository`;
-  const SCOPE_NAME = FormatString.convertToKebabCase(name);
+  const SCOPE_NAME = FormatString.convertToKebabCase(
+    repositoryType === "mssql" ? name : database
+  );
   const FORMATTED_SCHEMA_NAME = `${FormatString.convertToKebabCase(schema)}`;
   const FORMATTED_DATABASE_NAME = `${FormatString.convertToKebabCase(
     database

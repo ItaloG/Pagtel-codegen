@@ -44,7 +44,7 @@ describe("#Integration Repository Facade", () => {
 
     const MAIN_PATH = generateRepositoryPath(type);
 
-    const formattedName = FormatString.convertToKebabCase(data.name);
+    const formattedName = FormatString.convertToKebabCase(data.database);
 
     const templatePath = `${MAIN_PATH}/${formattedName}/get-dog-repository.ts`;
     const indexScopePath = `${MAIN_PATH}/index.ts`;
