@@ -1,2 +1,3 @@
-export * from "./handlers/factory-handler";
+export * from "./handlers";
 export * from "./app";
+export * from "./sub-command-app";

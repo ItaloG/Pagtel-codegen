@@ -3,11 +3,11 @@
 import yargs from "yargs";
 import colors from "colors";
 import { hideBin } from "yargs/helpers";
-import { app } from "./config";
+import { app, subCommandApp } from "./config";
 
 const {
   argv: {
-    _: [command],
+    _: [command, subCommand],
     ...args
   },
 }: any = yargs(hideBin(process.argv))
@@ -177,10 +177,28 @@ const {
       .example("service --name GetDog --scope dog", "create a service")
       .example("service -n GetDog -s dog", "create a service");
   })
+  .command("test", "Able test utils", (builder) => {
+    return builder
+      .command("domain", "generate domain mocks and stubs", (domainBuilder) => {
+        return domainBuilder.option("scope", {
+          alias: "s",
+          describe: "Folder where file will be read",
+          type: "string",
+          demandOption: true,
+        });
+      })
+      .example("domain --scope dog", "create mocks and stub")
+      .example("domain -s dog", "create mocks and stub");
+  })
   .epilog("copyright ItaloG - Italo Gabriel 2022");
 
 colors.enable();
 
 (async () => {
+  if (subCommand) {
+    await subCommandApp(args, command, subCommand);
+    return;
+  }
+
   await app(args, command);
 })();
