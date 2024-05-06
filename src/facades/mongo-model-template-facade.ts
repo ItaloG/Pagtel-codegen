@@ -41,5 +41,8 @@ namespace MongoModelFacade {
     name: string;
     scope: string;
   };
-  export type Result = Promise<{ type: string; message: string }>;
+  export type Result = Promise<{
+    type: "info" | "error" | "success";
+    message: string;
+  }>;
 }

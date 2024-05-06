@@ -16,4 +16,6 @@ type Params = {
   scope: string;
 };
 
-type Result = Promise<{ type: string; message: string }[]>;
+type Result = Promise<
+  { type: "info" | "error" | "success"; message: string }[]
+>;
