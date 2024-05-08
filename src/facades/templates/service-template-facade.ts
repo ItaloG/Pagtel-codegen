@@ -1,6 +1,6 @@
 import { generateServiceTemplate } from "@/templates";
 import { FormatString, generateServicePath, File, Folder } from "@/utils";
-import { generateIndex } from "./utils";
+import { generateIndex } from "../utils";
 
 export async function generateServiceFacade({
   name,

@@ -1,6 +1,6 @@
 import { generateControllerTemplate } from "@/templates";
 import { FormatString, generateControllerPath, File, Folder } from "@/utils";
-import { generateIndex } from "./utils";
+import { generateIndex } from "../utils";
 
 export async function generateControllerFacade({
   name,

@@ -1,6 +1,6 @@
 import { generateFactoryTemplate } from "@/templates";
 import { Folder, File, FormatString, generateFactoryPath } from "@/utils";
-import { generateIndex } from "./utils";
+import { generateIndex } from "../utils";
 
 export async function generateFactoryFacade({
   name,

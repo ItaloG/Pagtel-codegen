@@ -1,6 +1,6 @@
 import { generateMiddlewareTemplate } from "@/templates";
 import { FormatString, generateMiddlewarePath, File, Folder } from "@/utils";
-import { generateIndex } from "./utils";
+import { generateIndex } from "../utils";
 
 export async function generateMiddlewareFacade({
   name,

@@ -60,3 +60,7 @@ export const generateMongoModelPath = (): string => {
     ? `${TEST_TEMPLATE_DEFAULT_PATH}/infra/db/mongodb`
     : `src/infra/db/mongodb`;
 };
+
+export const generateDomainMockPath = (type: "source" | "test"): string => {
+  return type === "source" ? "src/domain/models" : "test/unit/domain/models";
+};

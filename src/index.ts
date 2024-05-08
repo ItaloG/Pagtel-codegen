@@ -177,7 +177,7 @@ const {
       .example("service --name GetDog --scope dog", "create a service")
       .example("service -n GetDog -s dog", "create a service");
   })
-  .command("test", "Able test utils", (builder) => {
+  .command("mock", "generate mocks", (builder) => {
     return builder
       .command("domain", "generate domain mocks and stubs", (domainBuilder) => {
         return domainBuilder.option("scope", {

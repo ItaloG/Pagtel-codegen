@@ -15,6 +15,10 @@ export class Folder {
       recursive: true,
     });
   }
+
+  static async readFolder({ folder }: ReadFolder.Params): ReadFolder.Result {
+    return fsPromises.readdir(folder);
+  }
 }
 
 namespace VerifyExists {
@@ -30,4 +34,9 @@ namespace CreateFolder {
     newFolder: string;
   };
   export type Result = Promise<void>;
+}
+
+namespace ReadFolder {
+  export type Params = { folder: string };
+  export type Result = Promise<string[]>;
 }

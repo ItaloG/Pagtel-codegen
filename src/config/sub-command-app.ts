@@ -1,30 +1,33 @@
 import { logger } from "@/utils";
 import { validateFields } from "@/validations";
+import { domainMockHandler, domainStubHandler } from "./handlers";
 
-type MappedCommands = "test";
+type MappedCommands = "mock";
 
 type SubCommands = "domain";
 
+type CommandArgs = { scope: string };
+
 export async function subCommandApp(
-  args: object,
+  args: CommandArgs,
   command: MappedCommands,
   subCommand?: SubCommands
 ) {
   try {
-    const MAPPED_COMMANDS = ["test"];
+    const MAPPED_COMMANDS = ["mock"];
 
     const MAPPED_SUBCOMMANDS = {
-      test: ["domain"],
+      mock: ["domain"],
     };
 
     const REQUIRED_FIELDS = {
-      test: {
+      mock: {
         domain: ["scope"],
       },
     };
 
     const HANDLERS = {
-      test: {
+      mock: {
         domain: [domainMockHandler, domainStubHandler],
       },
     };

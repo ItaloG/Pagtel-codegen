@@ -8,7 +8,7 @@ import {
   repositoryHandler,
   serviceHandler,
   usecaseHandler,
-} from "./handlers";
+} from "./handlers/templates";
 
 type MappedCommands =
   | "factory"

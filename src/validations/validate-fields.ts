@@ -7,5 +7,6 @@ export const validateFields = (
   fieldsToValidate.forEach((field) => {
     if (!ValidateString.validateSpecialCharacter(fields[field]))
       throw new Error(`Campo inválido: ${field}`);
+    if (!fields[field]) throw new Error(`Campo inválido: ${field}`);
   });
 };

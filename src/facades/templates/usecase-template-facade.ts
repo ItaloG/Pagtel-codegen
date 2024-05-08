@@ -1,6 +1,6 @@
 import { generateDataUsecaseTemplate } from "@/templates";
 import { FormatString, generateUsecasePath, File, Folder } from "@/utils";
-import { generateIndex } from "./utils";
+import { generateIndex } from "../utils";
 
 export async function generateUsecaseFacade({
   name,

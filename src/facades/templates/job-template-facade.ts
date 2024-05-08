@@ -1,6 +1,6 @@
 import { generateJobTemplate } from "@/templates";
 import { FormatString, File, Folder, generateJobPath } from "@/utils";
-import { generateIndex } from "./utils";
+import { generateIndex } from "../utils";
 
 export async function generateJobFacade({
   name,

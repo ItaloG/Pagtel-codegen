@@ -1,6 +1,6 @@
 import { File, Folder, FormatString, generateMongoModelPath } from "@/utils";
 import { generateMongoModelTemplate } from "@/templates";
-import { generateIndex } from "./utils";
+import { generateIndex } from "../utils";
 
 export async function generateMongoModelFacade({
   name,

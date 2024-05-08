@@ -1,4 +1,7 @@
-import { generateMongoModelFacade, generateRepositoryFacade } from "@/facades";
+import {
+  generateMongoModelFacade,
+  generateRepositoryFacade,
+} from "@/facades";
 
 export async function repositoryHandler({
   name,

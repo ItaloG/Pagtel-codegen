@@ -4,7 +4,7 @@ import {
   generateIndex,
   validateMongodbFolder,
   validateMssqlFolder,
-} from "./utils";
+} from "../utils";
 
 export async function generateRepositoryFacade({
   name,
